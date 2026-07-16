@@ -1,33 +1,613 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Trip · JW Portfolio</title>
+    <style>
+    /* ===== Reset & Base ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --color-bg: #fafafa;
+        --color-surface: #ffffff;
+        --color-text: #1f2430;
+        --color-text-muted: #6b7280;
+        --color-border: #e5e7eb;
+        --color-accent: #3b4a63;
+        --color-accent-hover: #2c3852;
+        --color-footer-bg: #14181f;
+        --color-footer-text: #9ca3af;
+        --font-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
+        --container-width: 1100px;
+        --radius: 10px;
+        --header-height: 72px;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        color: var(--color-text);
+        background: var(--color-bg);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    /* ===== Header ===== */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        background: rgba(250, 250, 250, 0.85);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--color-border);
+        transition: box-shadow 0.25s ease;
+    }
+
+    .site-header.scrolled {
+        box-shadow: 0 6px 20px rgba(20, 24, 31, 0.06);
+    }
+
+    .site-header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: var(--color-accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    .main-nav ul {
+        display: flex;
+        gap: 32px;
+    }
+
+    .main-nav a {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+        transition: color 0.2s ease;
+        padding: 8px 0;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+        color: var(--color-accent);
+    }
+
+    /* ===== Page header ===== */
+    .page-header {
+        padding: 56px 0 40px;
+        text-align: center;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .section-eyebrow {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        margin-bottom: 12px;
+    }
+
+    .page-header h1 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .page-header p {
+        color: var(--color-text-muted);
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 48px 0 96px;
+    }
+
+    /* ===== Filter ===== */
+    .filter-bar {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 9px 20px;
+        border-radius: 999px;
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        color: var(--color-text-muted);
+        font-size: 13px;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .filter-btn:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    .filter-btn.active {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: #fff;
+    }
+
+    /* ===== Gallery ===== */
+    .trip-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+    }
+
+    .trip-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .trip-card:hover {
+        box-shadow: 0 12px 30px rgba(20, 24, 31, 0.06);
+        transform: translateY(-2px);
+    }
+
+    .trip-photo {
+        aspect-ratio: 4 / 3;
+        border-bottom: 1px dashed var(--color-border);
+        background: var(--color-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--color-text-muted);
+    }
+
+    .trip-photo svg {
+        width: 26px;
+        height: 26px;
+        stroke: var(--color-text-muted);
+    }
+
+    .trip-photo span {
+        font-size: 12px;
+    }
+
+    .trip-body {
+        padding: 22px 24px 26px;
+    }
+
+    .trip-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .trip-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        color: var(--color-accent);
+    }
+
+    .trip-date {
+        font-size: 12px;
+        color: var(--color-text-muted);
+    }
+
+    .trip-body h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .trip-body p {
+        font-size: 14px;
+        color: var(--color-text-muted);
+    }
+
+    /* ===== Scroll reveal ===== */
+    .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .trip-grid .reveal:nth-child(2) { transition-delay: 0.06s; }
+    .trip-grid .reveal:nth-child(3) { transition-delay: 0.12s; }
+    .trip-grid .reveal:nth-child(4) { transition-delay: 0.18s; }
+    .trip-grid .reveal:nth-child(5) { transition-delay: 0.24s; }
+    .trip-grid .reveal:nth-child(6) { transition-delay: 0.3s; }
+
+    /* ===== Back to top ===== */
+    .to-top {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--color-accent);
+        color: #fff;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+        z-index: 90;
+    }
+
+    .to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .to-top:hover {
+        background: var(--color-accent-hover);
+    }
+
+    .to-top svg {
+        width: 18px;
+        height: 18px;
+        stroke: #fff;
+    }
+
+    /* ===== Footer ===== */
+    .site-footer {
+        background: var(--color-footer-bg);
+        color: var(--color-footer-text);
+        padding: 56px 0 28px;
+    }
+
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 32px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-brand .logo {
+        margin-bottom: 14px;
+    }
+
+    .footer-brand p {
+        max-width: 320px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .footer-col h4 {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 14px;
+    }
+
+    .footer-col li {
+        margin-bottom: 8px;
+    }
+
+    .footer-col a {
+        font-size: 13px;
+        color: var(--color-footer-text);
+        transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+        color: #fff;
+    }
+
+    .footer-bottom {
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 12px;
+        color: #6b7280;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 720px) {
+    .main-nav ul {
+        gap: 18px;
+    }
+    .footer-top {
+        flex-direction: column;
+    }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    }
+    </style>
 </head>
 <body>
-    <h1>나의 여행 앨범</h1>
-    <audio controls>
-        <source src="../media/music.mp3" type="audio/mpeg">
-    </audio>
-    <hr>
-    <p>
-        <img src="../media/리장.jpg" width="400" height="200" alt="리장 호도협"><br>리장 호도협 (2025년)
-    </p>
-    <p>
-        <img src="../media/세부.jpg" width="400" height="200" alt="세부 탑스힐"><br>세부 탑스힐 (2024년)
-    </p>
-    <p>
-        <img src="../media/홋카이도.jpg" width="400" height="200" alt="홋카이도 대설산"><br>홋카이도 대설산 (2025년)
-    </p>
-    <hr>
-    <h2>나의 여행 브이로그</h2>
-    <p>
-        <video width="400" height="200" controls>
-            <source src="../media/video.mp4" type="video/mp4">
-        </video>
-        <br>
-        리장의 아름다운 음악
-    </p>
+
+    <!-- 아이콘 스프라이트 (외부 라이브러리 없이 직접 그린 인라인 SVG) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <symbol id="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+        <circle cx="12" cy="13.5" r="3.3"></circle>
+        </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="6 11 12 5 18 11"></polyline>
+        </symbol>
+    </defs>
+    </svg>
+
+    <header class="site-header" id="siteHeader">
+    <div class="container">
+        <a href="index.html" class="logo">JW</a>
+        <nav class="main-nav">
+        <ul>
+            <li><a href="myProfile.html">My Profile</a></li>
+            <li><a href="myClass.html">My Class</a></li>
+            <li><a href="myTrip.html" class="active">My Trip</a></li>
+        </ul>
+        </nav>
+    </div>
+    </header>
+
+    <main>
+    <section class="page-header">
+        <div class="container">
+        <p class="section-eyebrow">Travel</p>
+        <h1>여행 기록</h1>
+        <p>다녀온 여행지의 사진과 경험을 기록하는 공간입니다. (샘플 콘텐츠)</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+        <div class="filter-bar">
+            <button type="button" class="filter-btn active" data-filter="all">전체</button>
+            <button type="button" class="filter-btn" data-filter="domestic">국내</button>
+            <button type="button" class="filter-btn" data-filter="abroad">해외</button>
+        </div>
+
+        <div class="trip-grid" id="tripGrid">
+            <div class="trip-card reveal" data-category="domestic">
+            <div class="trip-photo">
+                <svg><use href="#icon-camera"></use></svg>
+                <span>사진을 추가해주세요</span>
+            </div>
+            <div class="trip-body">
+                <div class="trip-meta">
+                <span class="trip-tag">국내</span>
+                <span class="trip-date">2025.05</span>
+                </div>
+                <h3>제주도</h3>
+                <p>협재 해변과 오름을 둘러본 봄 여행. 렌터카로 서쪽 해안을 따라 이동했다.</p>
+            </div>
+            </div>
+
+            <div class="trip-card reveal" data-category="domestic">
+            <div class="trip-photo">
+                <svg><use href="#icon-camera"></use></svg>
+                <span>사진을 추가해주세요</span>
+            </div>
+            <div class="trip-body">
+                <div class="trip-meta">
+                <span class="trip-tag">국내</span>
+                <span class="trip-date">2024.11</span>
+                </div>
+                <h3>부산</h3>
+                <p>해운대와 감천문화마을을 둘러보고 자갈치시장에서 회를 먹은 1박 2일 여행.</p>
+            </div>
+            </div>
+
+            <div class="trip-card reveal" data-category="domestic">
+            <div class="trip-photo">
+                <svg><use href="#icon-camera"></use></svg>
+                <span>사진을 추가해주세요</span>
+            </div>
+            <div class="trip-body">
+                <div class="trip-meta">
+                <span class="trip-tag">국내</span>
+                <span class="trip-date">2024.08</span>
+                </div>
+                <h3>강릉</h3>
+                <p>안목해변 카페 거리와 경포호를 따라 자전거를 타며 여름을 보냈다.</p>
+            </div>
+            </div>
+
+            <div class="trip-card reveal" data-category="abroad">
+            <div class="trip-photo">
+                <svg><use href="#icon-camera"></use></svg>
+                <span>사진을 추가해주세요</span>
+            </div>
+            <div class="trip-body">
+                <div class="trip-meta">
+                <span class="trip-tag">해외</span>
+                <span class="trip-date">2024.03</span>
+                </div>
+                <h3>도쿄, 일본</h3>
+                <p>시부야와 아사쿠사를 걸어 다니며 벚꽃 시즌의 도쿄를 경험한 4박 5일.</p>
+            </div>
+            </div>
+
+            <div class="trip-card reveal" data-category="abroad">
+            <div class="trip-photo">
+                <svg><use href="#icon-camera"></use></svg>
+                <span>사진을 추가해주세요</span>
+            </div>
+            <div class="trip-body">
+                <div class="trip-meta">
+                <span class="trip-tag">해외</span>
+                <span class="trip-date">2023.09</span>
+                </div>
+                <h3>파리, 프랑스</h3>
+                <p>에펠탑과 루브르 박물관을 돌아본 유럽 배낭여행의 첫 도시.</p>
+            </div>
+            </div>
+
+            <div class="trip-card reveal" data-category="abroad">
+            <div class="trip-photo">
+                <svg><use href="#icon-camera"></use></svg>
+                <span>사진을 추가해주세요</span>
+            </div>
+            <div class="trip-body">
+                <div class="trip-meta">
+                <span class="trip-tag">해외</span>
+                <span class="trip-date">2023.01</span>
+                </div>
+                <h3>방콕, 태국</h3>
+                <p>왓 아룬과 수상시장을 둘러보고 현지 길거리 음식을 즐긴 겨울 여행.</p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    </main>
+
+    <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+        <div class="footer-brand">
+            <span class="logo">JW</span>
+            <p>조종원의 개인 포트폴리오 허브입니다. 프로필, 일정, 여행 기록을 한곳에서 확인하실 수 있습니다.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Pages</h4>
+            <ul>
+            <li><a href="myProfile.html">My Profile</a></li>
+            <li><a href="myClass.html">My Class</a></li>
+            <li><a href="myTrip.html">My Trip</a></li>
+            <li><a href="signUp.html">Sign Up</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+            <li><a href="mailto:csjsyj1@gmail.com">csjsyj1@gmail.com</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="footer-bottom">
+        <span>© 2026 JW Portfolio. All rights reserved.</span>
+        <span>Made by 조종원</span>
+        </div>
+    </div>
+    </footer>
+
+    <button class="to-top" id="toTopBtn" aria-label="맨 위로 이동">
+    <svg><use href="#icon-arrow-up"></use></svg>
+    </button>
+
+    <script>
+    // 스크롤 리빌
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+            }
+        });
+        }, { threshold: 0.12 });
+        revealEls.forEach(function (el) { observer.observe(el); });
+    } else {
+        revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    // 국내/해외 필터
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var tripCards = document.querySelectorAll('.trip-card');
+    filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var filter = btn.dataset.filter;
+        tripCards.forEach(function (card) {
+            var match = filter === 'all' || card.dataset.category === filter;
+            card.style.display = match ? '' : 'none';
+        });
+        });
+    });
+
+    // 헤더 그림자 + 맨 위로 이동 버튼
+    var header = document.getElementById('siteHeader');
+    var toTopBtn = document.getElementById('toTopBtn');
+    window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 10);
+        toTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    toTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    </script>
+
 </body>
 </html>
