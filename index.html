@@ -3,10 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[과제] Project 구성과 index.html 생성</title>
+    <title>Welcome SKALA</title>
+    <style>
+        :root{
+            --sk-red:#EA002C;
+            --sk-orange:#FF8C00;
+            --bg-dark:#0b0b10;
+            --bg-dark2:#141119;
+            --text-light:#f5f5f7;
+            --text-dim:#b9b9c2;
+        }
+        body {
+            font-family: sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        .brand {
+            position:fixed;
+            top:20px;
+            left:25px;
+            z-index:100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /*-- Scroll --*/
+        .reveal {
+            opacity: 0;
+        }
+        .eyebrow {
+            font-size:14px;
+            letter-spacing: 2px;
+            color:var(--sk-orange);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        /*-- Hero --*/
+        .hero {
+            background: radial-gradient(circle at 20% 20%, rgba(234,0,44,0.25), transparent 45%);
+        }
+        .hero h1{
+            font-size: clamp(36px, 7vw, 72px);
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -1px;
+        }
+        /*-- Section --*/
+        .section-inner{
+            max-width: 880px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>환영 인사</h1>
-    <p>스칼라에 오신 것을 환영합니다.</p>
+    <div class="brand">
+        <div>SKALA</div>
+    </div>
+    <section class="hero">
+        <div class="section-inner">
+            <div class="eyebrow">SKALA(SK AI Leader Academy)</div>
+            <h1>SKALA 부트캠프에<br>오신 것을 환영합니다</h1>
+        </div>    
+    </section>
 </body>
 </html>
