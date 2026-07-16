@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JW Hub</title>
     <style>
         * {
             margin: 0;
@@ -185,6 +185,7 @@
 
         /* ----- footer ------ */
         .site-footer {
+            margin-top: 50px;
             background: var(--color-footer-bg);
             color: var(--color-footer-text);
             padding: 56px 0 28px;
@@ -239,63 +240,345 @@
             gap: 8px;
             font-size: 12px;
             color: #6b7280;
-        }        
+        }
+
+        /* ----- Responsive ----- */
+        @media (max-width: 720px) {
+            .main-nav ul {
+                gap: 18px;
+            }
+        }
+
+        /* ----- Mini Tools ----- */
+        .mini-tools {
+            padding: 80px 0;
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 48px;
+        }
+        
+        .section-header h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .section-header p {
+            color: var(--color-text-muted);
+            font-size: 15px;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        
+        .tool-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: left;
+        }
+        
+        .tool-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-accent);
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--color-accent);
+            background: rgba(59, 74, 99, 0.06);
+        }
+        
+        .weather-controls {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .weather-controls select {
+            flex: 1;
+            padding: 9px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-surface);
+            font-family: var(--font-sans);
+            font-size: 13px;
+        }
+        
+        .weather-result {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            min-height: 40px;
+            margin-bottom: 8px;
+        }
+        
+        .tool-note {
+            font-size: 11px;
+            color: var(--color-text-muted);
+            opacity: 0.8;
+        }
+
+        .weather-controls {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .weather-controls select {
+            flex: 1;
+            padding: 9px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-surface);
+            font-family: var(--font-sans);
+            font-size: 13px;
+        }
+
+        .weather-box {
+            min-height: 88px;
+            margin-bottom: 8px;
+            padding: 16px;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            background: var(--color-surface);
+        }
+
+        .weather-placeholder {
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        .weather-loc {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .weather-loading {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 10px;
+        }
+
+        .weather-stats {
+            display: flex;
+            gap: 24px;
+            margin-top: 12px;
+        }
+
+        .weather-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .weather-stat-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--color-accent);
+            line-height: 1.2;
+        }
+
+        .weather-stat-label {
+            font-size: 11px;
+            color: var(--color-text-muted);
+            margin-top: 2px;
+        }
+
+        .weather-error {
+            font-size: 13px;
+            color: #c0392b;
+        }
     </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container">
-    <a href="index.html" class="logo">JW</a>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="myProfile.html">My Profile</a></li>
-        <li><a href="myClass.html">My Class</a></li>
-        <li><a href="myTrip.html">My Trip</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="hero">
-    <p class="hero-eyebrow">Welcome to JW Website Hub!</p>
-    <h1>
-      안녕하세요, 저는 <span>조종원</span>입니다.<br />
-      더 나은 경험을 고민하는 개발자입니다.
-    </h1>
-    <a href="signUp.html" class="btn btn-primary">회원가입하고 소통하기</a>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="logo">JW</span>
-        <p>조종원의 개인 포트폴리오 허브입니다. 프로필, 일정, 기록을 한곳에서 확인하실 수 있습니다.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Pages</h4>
+    <header class="site-header">
+    <div class="container">
+        <a href="index.html" class="logo">JW</a>
+        <nav class="main-nav">
         <ul>
-          <li><a href="myProfile.html">My Profile</a></li>
-          <li><a href="myClass.html">My Class</a></li>
-          <li><a href="myTrip.html">My Trip</a></li>
-          <li><a href="signUp.html">Sign Up</a></li>
+            <li><a href="myProfile.html">My Profile</a></li>
+            <li><a href="myClass.html">My Class</a></li>
+            <li><a href="myTrip.html">My Trip</a></li>
         </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:csjsyj1@gmail.com">csjsyj1@gmail.com</a></li>
-        </ul>
-      </div>
+        </nav>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 JW Portfolio. All rights reserved.</span>
-      <span>Made by 조종원</span>
-    </div>
-  </div>
-</footer>
+    </header>
 
+    <main>
+    <section class="hero">
+        <p class="hero-eyebrow">Welcome to JW Website Hub!</p>
+        <h1>
+        안녕하세요, 저는 <span>조종원</span>입니다.<br />
+        더 나은 경험을 고민하는 개발자입니다.
+        </h1>
+        <a href="signUp.html" class="btn btn-primary">회원가입하고 소통하기</a>
+    </section>
+    </main>
+    <aside class="mini-tools" id="miniTools" aria-label="자바스크립트로 만든 미니 프로그램">
+        <div class="container">
+            <div class="section-header">
+                <p class="hero-eyebrow">Mini Tools</p>
+                <h2>자바스크립트로 만든 추가 기능</h2>
+                <p>버튼을 누르면 팝업 창에서 실행되는 간단한 프로그램과, 실시간으로 날씨 데이터를 가져오는 위젯입니다.</p>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h3>Up-Down 숫자 맞추기</h3>
+                    <p>1부터 100사이의 숫자를 몇 번 만에 맞히는지 확인해보세요.</p>
+                    <button type="button" class="btn-outline" id="startUpDown">업다운 게임</button>    
+                </div>
+                <div class="tool-card">
+                    <h3>성적 계산기</h3>
+                    <p>과목별 점수를 입력하면 총점, 평균, 등급을 계산합니다.</p>
+                    <button type="button" class="btn-outline" id="startGrade">성적 계산기</button>
+                </div>
+                <div class="tool-card">
+                    <h3>내 가방 보기</h3>
+                    <p>가방 속에 들어있는 물건과 수량 목록을 확인합니다.</p>
+                    <button type="button" class="btn-outline" id="startBag">내 가방 보기</button>
+                </div>
+                <div class="tool-card">
+                    <h3>실시간 날씨</h3>
+                    <p>도시를 선택하면 실시간 기온과 날씨 정보를 가져옵니다.</p>
+                    <div class="weather-controls">
+                        <select id="citySelect">
+                            <option value="">도시를 선택하세요</option>
+                            <option value="pangyo">판교</option>
+                            <option value="gwangju">광주</option>
+                            <option value="ulsan">울산</option>
+                        </select>
+                    </div>
+                    <div class="weather-box" id="weather-box">
+                        <p class="weather-placeholder">도시를 선택하면 위치와 날씨 정보가 표시됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+        <div class="footer-brand">
+            <span class="logo">JW</span>
+            <p>조종원의 개인 포트폴리오 허브입니다. 프로필, 일정, 기록을 한곳에서 확인하실 수 있습니다.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Pages</h4>
+            <ul>
+            <li><a href="myProfile.html">My Profile</a></li>
+            <li><a href="myClass.html">My Class</a></li>
+            <li><a href="myTrip.html">My Trip</a></li>
+            <li><a href="signUp.html">Sign Up</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+            <li><a href="mailto:csjsyj1@gmail.com">csjsyj1@gmail.com</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="footer-bottom">
+        <span>© 2026 JW Portfolio. All rights reserved.</span>
+        <span>Made by 조종원</span>
+        </div>
+    </div>
+    </footer>
+    <script>
+    // Up-Down 숫자 맞추기 게임 (prompt/alert 사용)
+    document.getElementById('startUpDown').addEventListener('click', function () {
+        var answer = Math.floor(Math.random() * 100) + 1;
+        var tries = 0;
+    
+        while (true) {
+        var guessStr = window.prompt('1부터 100 사이의 숫자를 입력하세요. (취소를 누르면 게임이 종료됩니다)');
+        if (guessStr === null) {
+            window.alert('게임을 종료합니다.');
+            return;
+        }
+    
+        var guess = parseInt(guessStr, 10);
+        if (isNaN(guess)) {
+            window.alert('숫자만 입력해주세요.');
+            continue;
+        }
+    
+        tries++;
+        if (guess === answer) {
+            window.alert(tries + '번 만에 정답을 맞히셨습니다! 정답은 ' + answer + '입니다.');
+            return;
+        }
+        window.alert(guess < answer ? '더 큰 숫자입니다.' : '더 작은 숫자입니다.');
+        }
+    });
+    
+    // 성적 계산기 (prompt/alert 사용)
+    document.getElementById('startGrade').addEventListener('click', function () {
+        var subjects = ['국어', '영어', '수학'];
+        var total = 0;
+    
+        for (var i = 0; i < subjects.length; i++) {
+        var scoreStr = window.prompt(subjects[i] + ' 점수를 입력하세요. (0~100)');
+        if (scoreStr === null) {
+            window.alert('계산을 취소했습니다.');
+            return;
+        }
+        var score = parseInt(scoreStr, 10);
+        if (isNaN(score)) score = 0;
+        total += score;
+        }
+    
+        var average = total / subjects.length;
+        var grade = average >= 90 ? 'A' : average >= 80 ? 'B' : average >= 70 ? 'C' : average >= 60 ? 'D' : 'F';
+        window.alert('총점: ' + total + '점\n평균: ' + average.toFixed(1) + '점\n등급: ' + grade);
+    });
+    
+    // 내 가방 보기 (배열 + alert 사용)
+    document.getElementById('startBag').addEventListener('click', function () {
+        var bag = [
+        { name: '노트북', count: 1 },
+        { name: '노트', count: 2 },
+        { name: '펜', count: 3 },
+        { name: '이어폰', count: 1 }
+        ];
+    
+        var message = '내 가방 속 물건 목록\n\n';
+        bag.forEach(function (item) {
+        message += item.name + ' - ' + item.count + '개\n';
+        });
+        window.alert(message);
+    });
+    </script>
+    
+    <script type="module" src="realtimeInfo.js"></script>
 </body>
 </html>
