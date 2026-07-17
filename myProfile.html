@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile · JW Portfolio</title>
     <style>
-        /* ===== Reset & Base ===== */
+        /* ----- Reset ----- */
         * {
             margin: 0;
             padding: 0;
@@ -60,7 +60,7 @@
             padding: 0 24px;
         }
 
-        /* ===== Header ===== */
+        /* ----- Header ----- */
         .site-header {
             position: sticky;
             top: 0;
@@ -119,7 +119,7 @@
             color: var(--color-accent);
         }
 
-        /* ===== Page header / profile hero ===== */
+        /* ----- Page Header ----- */
         .page-header {
             padding: 64px 0 48px;
             border-bottom: 1px solid var(--color-border);
@@ -136,11 +136,12 @@
 
         .profile-hero {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
-            text-align: left;
+            text-align: center;
         }
 
         .profile-photo {
@@ -181,7 +182,7 @@
             font-size: 15px;
         }
 
-        /* ===== Section shells ===== */
+        /* ----- Section ----- */
         .section {
             padding: 80px 0;
         }
@@ -209,7 +210,7 @@
             border-bottom: 1px solid var(--color-border);
         }
 
-        /* ===== Cards (skills / projects) ===== */
+        /* ----- Cards ----- */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -310,7 +311,7 @@
             color: var(--color-text-muted);
             line-height: 1.7;
         }
-        /* ===== Timeline (career) ===== */
+        /* ----- Timeline ----- */
         .timeline {
             max-width: 720px;
             margin: 0 auto;
@@ -357,7 +358,7 @@
             font-size: 14px;
         }
 
-        /* ===== Scroll reveal ===== */
+        /* ----- Scroll Reveal ----- */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -373,7 +374,7 @@
         .card-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
         .card-grid .reveal:nth-child(4) { transition-delay: 0.24s; }
 
-        /* ===== Back to top ===== */
+        /* ----- Back To Top ----- */
         .to-top {
             position: fixed;
             right: 24px;
@@ -411,7 +412,7 @@
             stroke: #fff;
         }
 
-        /* ===== Footer ===== */
+        /* ----- Footer ----- */
         .site-footer {
         background: var(--color-footer-bg);
         color: var(--color-footer-text);
@@ -469,7 +470,7 @@
             color: #6b7280;
         }
 
-        /* ===== Responsive ===== */
+        /* ----- Responsive ----- */
         @media (max-width: 720px) {
         .main-nav ul {
             gap: 18px;
@@ -501,9 +502,9 @@
             transform: none;
             transition: none;
         }
-        }
+    }
 
-        /* ----- Header auth (로그인 버튼 영역) ----- */
+        /* ----- Header Auth ----- */
         .header-auth { display: flex; align-items: center; gap: 10px; }
         .header-login-btn {
             padding: 8px 18px;
@@ -536,7 +537,6 @@
             transition: border-color 0.2s ease, color 0.2s ease;
         }
         .header-logout-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
-
     </style>
 </head>
 <body>
@@ -647,8 +647,18 @@
                 <p class="section-eyebrow">Introduction</p>
                 <h2>소개</h2>
                 <p>
-                안녕하세요, 조종원입니다.<br> 사용자 관점에서 문제를 정의하고, 이를 코드로 풀어내는 과정을 좋아합니다.
-                작은 디테일이 전체 경험을 바꾼다고 믿으며, 꾸준한 학습과 기록을 통해 성장하고 있습니다.
+                    안녕하세요. 생성형 AI 엔지니어를 목표로 성장하고 있는
+                    <strong>조종원</strong>입니다.
+                    <br><br>
+
+                    웹 개발의 기본기를 다지며 AI 기술을 실제 서비스로 구현하는
+                    역량을 키우고 있습니다.<br> 사용자의 관점에서 서비스를
+                    만드는 것을 중요하게 생각하며,<br> 새로운 기술을 꾸준히 배우고
+                    프로젝트에 적용하며 성장하고 있습니다.
+                    <br><br>
+
+                    앞으로는 생성형 AI를 활용해 사용자에게 실질적인 가치를 제공하는
+                    서비스를 만드는 <br> <strong>생성형 AI 서비스 개발자</strong>가 되고자 합니다.
                 </p>
             </div>
         </div>
@@ -672,12 +682,35 @@
                     </div>
                 </div>
                 <div class="card reveal">
-                    <h3>Backend</h3>
-                    <p>서버와 데이터 처리를 위해 학습 중인 기술입니다.</p>
+                    <h3>Python</h3>
+                    <p>데이터 처리와 머신러닝 프로젝트에 주로 사용하는 언어입니다.</p>
                     <div class="tag-list">
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-server"></use></svg>Node.js</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>Python</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3>C · Java</h3>
+                    <p>프로그래밍의 기초를 다진 언어입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>C</span>
                         <span class="tag"><svg class="tag-icon"><use href="#icon-cup"></use></svg>Java</span>
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-database"></use></svg>MySQL</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3>머신러닝 · 딥러닝</h3>
+                    <p>통계학 배경을 바탕으로 공부하고 프로젝트에 적용해 본 분야입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>CNN</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>RNN · LSTM</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>BERT · Transformer</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3>통계처리 프로그램</h3>
+                    <p>통계 분석과 데이터 처리에 사용해 본 프로그램입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-database"></use></svg>SPSS</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-database"></use></svg>R</span>
                     </div>
                 </div>
                 <div class="card reveal">
@@ -687,16 +720,6 @@
                         <span class="tag"><svg class="tag-icon"><use href="#icon-branch"></use></svg>Git</span>
                         <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>Figma</span>
                         <span class="tag"><svg class="tag-icon"><use href="#icon-note"></use></svg>Notion</span>
-                    </div>
-                </div>
-                <div class="card reveal">
-                    <h3>SKALA (SK AI Leader Academy)</h3>
-                    <p>AI 서비스 기획부터 배포까지 실무형 커리큘럼으로 학습 중입니다.</p>
-                    <div class="tag-list">
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-book"></use></svg>AI 서비스 기초</span>
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>AI 서비스화</span>
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-cloud"></use></svg>배포·운영</span>
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>생성형 AI</span>
                     </div>
                 </div>
             </div>
@@ -719,12 +742,12 @@
                 <div class="timeline-item reveal">
                     <p class="timeline-date">2025.09 - 2025.10</p>
                     <h3>SK AI Dream Camp 2025</h3>
-                    <p>데이터 구조에 대응하는 금융 웹 대시보드 서비스 개발 프로젝트를 수행했습니다.</p>
+                    <p>트랜스포머 모델 구조에 대한 학습 및 현업 시계열 데이터를 활용한 실습 과정을 수행했습니다.</p>
                 </div>
                 <div class="timeline-item reveal">
                     <p class="timeline-date">2020.03 - 2026.02</p>
                     <h3>전남대학교 학사 졸업 <small>(주전공: 통계학과, 복수전공: 데이터사이언스융합학)</small></h3>
-                    <p>컴퓨터 관련 전공을 통해 개발 기초 역량을 다졌습니다.</p>
+                    <p>통계학 이론과 데이터 분석 및 AI 기술에 대한 기초 역량을 다졌습니다.</p>
                 </div>
             </div>
         </div>
@@ -803,7 +826,7 @@
     </button>
 
     <script>
-        // 스크롤 시 요소가 화면에 들어오면 서서히 나타나는 효과
+        /* ----- Scroll Reveal ----- */
         var revealEls = document.querySelectorAll('.reveal');
         if ('IntersectionObserver' in window) {
             var observer = new IntersectionObserver(function (entries) {
@@ -819,7 +842,7 @@
             revealEls.forEach(function (el) { el.classList.add('is-visible'); });
         }
 
-        // 스크롤 시 헤더에 그림자 추가
+        /* ----- Header Scroll ----- */
         var header = document.getElementById('siteHeader');
         var toTopBtn = document.getElementById('toTopBtn');
         window.addEventListener('scroll', function () {
@@ -828,12 +851,12 @@
             toTopBtn.classList.toggle('visible', window.scrollY > 400);
         });
 
-        // 맨 위로 이동 버튼
+        /* ----- Back To Top ----- */
         toTopBtn.addEventListener('click', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // 로그인 상태 표시 (헤더 오른쪽)
+        /* ----- Auth ----- */
         var SESSION_KEY = 'jwhub_session';
 
         function getSession() {
