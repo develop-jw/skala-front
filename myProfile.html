@@ -1,762 +1,802 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>My Profile · JW Portfolio</title>
-<style>
-    /* ===== Reset & Base ===== */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile · JW Portfolio</title>
+    <style>
+        /* ===== Reset & Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    :root {
-        --color-bg: #fafafa;
-        --color-surface: #ffffff;
-        --color-text: #1f2430;
-        --color-text-muted: #6b7280;
-        --color-border: #e5e7eb;
-        --color-accent: #3b4a63;
-        --color-accent-hover: #2c3852;
-        --color-footer-bg: #14181f;
-        --color-footer-text: #9ca3af;
-        --font-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
-        --container-width: 1100px;
-        --radius: 10px;
-        --header-height: 72px;
-    }
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-text: #1f2430;
+            --color-text-muted: #6b7280;
+            --color-border: #e5e7eb;
+            --color-accent: #3b4a63;
+            --color-accent-hover: #2c3852;
+            --color-footer-bg: #14181f;
+            --color-footer-text: #9ca3af;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
+            --container-width: 1100px;
+            --radius: 10px;
+            --header-height: 72px;
+        }
 
-    html {
-        scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-        font-family: var(--font-sans);
-        color: var(--color-text);
-        background: var(--color-bg);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-    }
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    ul {
-        list-style: none;
-    }
+        ul {
+            list-style: none;
+        }
 
-    img {
-        max-width: 100%;
-        display: block;
-    }
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-    .container {
-        max-width: var(--container-width);
-        margin: 0 auto;
-        padding: 0 24px;
-    }
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    /* ===== Header ===== */
-    .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        height: var(--header-height);
-        display: flex;
-        align-items: center;
-        background: rgba(250, 250, 250, 0.85);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--color-border);
-        transition: box-shadow 0.25s ease;
-    }
+        /* ===== Header ===== */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            background: rgba(250, 250, 250, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--color-border);
+            transition: box-shadow 0.25s ease;
+        }
 
-    .site-header.scrolled {
-        box-shadow: 0 6px 20px rgba(20, 24, 31, 0.06);
-    }
+        .site-header.scrolled {
+            box-shadow: 0 6px 20px rgba(20, 24, 31, 0.06);
+        }
 
-    .site-header .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-    }
+        .site-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
 
-    .logo {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        background: var(--color-accent);
-        color: #fff;
-        font-weight: 700;
-        font-size: 15px;
-        letter-spacing: 0.5px;
-    }
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--color-accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
 
-    .main-nav ul {
-        display: flex;
-        gap: 32px;
-    }
+        .main-nav ul {
+            display: flex;
+            gap: 32px;
+        }
 
-    .main-nav a {
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--color-text-muted);
-        transition: color 0.2s ease;
-        padding: 8px 0;
-    }
+        .main-nav a {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            transition: color 0.2s ease;
+            padding: 8px 0;
+        }
 
-    .main-nav a:hover,
-    .main-nav a.active {
-        color: var(--color-accent);
-    }
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--color-accent);
+        }
 
-    /* ===== Page header / profile hero ===== */
-    .page-header {
-        padding: 64px 0 48px;
-        border-bottom: 1px solid var(--color-border);
-    }
+        /* ===== Page header / profile hero ===== */
+        .page-header {
+            padding: 64px 0 48px;
+            border-bottom: 1px solid var(--color-border);
+        }
 
-    .section-eyebrow {
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--color-accent);
-        margin-bottom: 12px;
-    }
+        .section-eyebrow {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+        }
 
-    .profile-hero {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        flex-wrap: wrap;
-        text-align: left;
-    }
+        .profile-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            text-align: left;
+        }
 
-    .profile-photo {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        border: 2px dashed var(--color-border);
-        background: var(--color-surface);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        color: var(--color-text-muted);
-        flex-shrink: 0;
-    }
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--color-text-muted);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
 
-    .profile-photo svg {
-        width: 28px;
-        height: 28px;
-        stroke: var(--color-text-muted);
-    }
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 22%;
+        }
 
-    .profile-photo span {
-        font-size: 12px;
-        text-align: center;
-        padding: 0 16px;
-        line-height: 1.4;
-    }
+        .profile-intro {
+            max-width: 460px;
+        }
 
-    .profile-intro {
-        max-width: 460px;
-    }
+        .profile-intro h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
 
-    .profile-intro h1 {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 12px;
-    }
+        .profile-intro p.desc {
+            color: var(--color-text-muted);
+            font-size: 15px;
+        }
 
-    .profile-intro p.desc {
-        color: var(--color-text-muted);
-        font-size: 15px;
-    }
+        /* ===== Section shells ===== */
+        .section {
+            padding: 80px 0;
+        }
 
-    /* ===== Section shells ===== */
-    .section {
-        padding: 80px 0;
-    }
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 48px;
+        }
 
-    .section-header {
-        text-align: center;
-        max-width: 640px;
-        margin: 0 auto 48px;
-    }
+        .section-header h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
 
-    .section-header h2 {
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 12px;
-    }
+        .section-header p {
+            color: var(--color-text-muted);
+            font-size: 15px;
+        }
 
-    .section-header p {
-        color: var(--color-text-muted);
-        font-size: 15px;
-    }
+        .section-alt {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
 
-    .section-alt {
-        background: var(--color-surface);
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
-    }
+        /* ===== Cards (skills / projects) ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
 
-    /* ===== Cards (skills / projects) ===== */
-    .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 24px;
-    }
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
 
-    .card {
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius);
-        padding: 28px;
-        transition: box-shadow 0.2s ease, transform 0.2s ease;
-    }
+        .card:hover {
+            box-shadow: 0 12px 30px rgba(20, 24, 31, 0.06);
+            transform: translateY(-2px);
+        }
 
-    .card:hover {
-        box-shadow: 0 12px 30px rgba(20, 24, 31, 0.06);
-        transform: translateY(-2px);
-    }
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
 
-    .card h3 {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
+        .card p {
+            color: var(--color-text-muted);
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
 
-    .card p {
-        color: var(--color-text-muted);
-        font-size: 14px;
-        margin-bottom: 14px;
-    }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
 
-    .tag-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px 5px 8px;
+            border-radius: 999px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+        }
 
-    .tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 12px;
-        font-weight: 600;
-        padding: 5px 12px 5px 8px;
-        border-radius: 999px;
-        background: var(--color-bg);
-        border: 1px solid var(--color-border);
-        color: var(--color-text-muted);
-    }
+        .tag-icon {
+            width: 14px;
+            height: 14px;
+            stroke: var(--color-accent);
+            flex-shrink: 0;
+        }
 
-    .tag-icon {
-        width: 14px;
-        height: 14px;
-        stroke: var(--color-accent);
-        flex-shrink: 0;
-    }
+        .project-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
 
-    /* ===== Timeline (career) ===== */
-    .timeline {
-        max-width: 720px;
-        margin: 0 auto;
-        border-left: 2px solid var(--color-border);
-        padding-left: 32px;
-    }
+        .project-chevron {
+            width: 14px;
+            height: 14px;
+            stroke: var(--color-accent);
+            transition: transform 0.25s ease;
+        }
 
-    .timeline-item {
-        position: relative;
-        padding-bottom: 40px;
-    }
+        .project-card.is-expanded .project-chevron {
+            transform: rotate(180deg);
+        }
 
-    .timeline-item:last-child {
-        padding-bottom: 0;
-    }
+        .project-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
 
-    .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -38px;
-        top: 4px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--color-accent);
-    }
+        .project-card.is-expanded .project-detail {
+            max-height: 240px;
+        }
 
-    .timeline-date {
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--color-accent);
-        margin-bottom: 6px;
-    }
+        .project-detail p {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--color-border);
+            font-size: 13px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+        /* ===== Timeline (career) ===== */
+        .timeline {
+            max-width: 720px;
+            margin: 0 auto;
+            border-left: 2px solid var(--color-border);
+            padding-left: 32px;
+        }
 
-    .timeline-item h3 {
-        font-size: 16px;
-        margin-bottom: 6px;
-    }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
 
-    .timeline-item p {
-        color: var(--color-text-muted);
-        font-size: 14px;
-    }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
 
-    /* ===== Scroll reveal ===== */
-    .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -38px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-accent);
+        }
 
-    .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+        .timeline-date {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 6px;
+        }
 
-    .card-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
-    .card-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
-    .card-grid .reveal:nth-child(4) { transition-delay: 0.24s; }
+        .timeline-item h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
 
-    /* ===== Back to top ===== */
-    .to-top {
-        position: fixed;
-        right: 24px;
-        bottom: 24px;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: var(--color-accent);
-        color: #fff;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        opacity: 0;
-        transform: translateY(10px);
-        pointer-events: none;
-        transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
-        z-index: 90;
-    }
+        .timeline-item p {
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
 
-    .to-top.visible {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
+        /* ===== Scroll reveal ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
 
-    .to-top:hover {
-        background: var(--color-accent-hover);
-    }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .to-top svg {
-        width: 18px;
-        height: 18px;
-        stroke: #fff;
-    }
+        .card-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
+        .card-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
+        .card-grid .reveal:nth-child(4) { transition-delay: 0.24s; }
 
-    /* ===== Footer ===== */
-    .site-footer {
-    background: var(--color-footer-bg);
-    color: var(--color-footer-text);
-    padding: 56px 0 28px;
-    }
+        /* ===== Back to top ===== */
+        .to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            color: #fff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+            z-index: 90;
+        }
 
-    .footer-top {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 32px;
-        padding-bottom: 32px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
+        .to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
 
-    .footer-brand .logo {
-        margin-bottom: 14px;
-    }
+        .to-top:hover {
+            background: var(--color-accent-hover);
+        }
 
-    .footer-brand p {
-        max-width: 320px;
-        font-size: 13px;
-        line-height: 1.7;
-    }
+        .to-top svg {
+            width: 18px;
+            height: 18px;
+            stroke: #fff;
+        }
 
-    .footer-col h4 {
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #fff;
-        margin-bottom: 14px;
-    }
-
-    .footer-col li {
-        margin-bottom: 8px;
-    }
-
-    .footer-col a {
-        font-size: 13px;
+        /* ===== Footer ===== */
+        .site-footer {
+        background: var(--color-footer-bg);
         color: var(--color-footer-text);
-        transition: color 0.2s ease;
-    }
+        padding: 56px 0 28px;
+        }
 
-    .footer-col a:hover {
-        color: #fff;
-    }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
-    .footer-bottom {
-        padding-top: 24px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 8px;
-        font-size: 12px;
-        color: #6b7280;
-    }
+        .footer-brand .logo {
+            margin-bottom: 14px;
+        }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 720px) {
-    .main-nav ul {
-        gap: 18px;
-    }
-    .profile-hero {
-        flex-direction: column;
-        text-align: center;
-    }
-    .profile-intro {
-        text-align: center;
-    }
-    .profile-intro h1 {
-        font-size: 26px;
-    }
-    .footer-top {
-        flex-direction: column;
-    }
-    .timeline {
-        padding-left: 24px;
-    }
-    .timeline-item::before {
-        left: -30px;
-    }
-    }
+        .footer-brand p {
+            max-width: 320px;
+            font-size: 13px;
+            line-height: 1.7;
+        }
 
-    @media (prefers-reduced-motion: reduce) {
-    .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
+        .footer-col h4 {
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            font-size: 13px;
+            color: var(--color-footer-text);
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 720px) {
+        .main-nav ul {
+            gap: 18px;
+        }
+        .profile-hero {
+            flex-direction: column;
+            text-align: center;
+        }
+        .profile-intro {
+            text-align: center;
+        }
+        .profile-intro h1 {
+            font-size: 26px;
+        }
+        .footer-top {
+            flex-direction: column;
+        }
+        .timeline {
+            padding-left: 24px;
+        }
+        .timeline-item::before {
+            left: -30px;
+        }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+        .reveal {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
     }
-}
-</style>
+    </style>
 </head>
 <body>
+    <!-- 아이콘 스프라이트 (외부 라이브러리 없이 직접 그린 인라인 SVG) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="8 6 3 12 8 18"></polyline>
+                <polyline points="16 6 21 12 16 18"></polyline>
+            </symbol>
+            <symbol id="icon-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a9 9 0 1 0 0 18c1 0 1.6-.8 1.2-1.7-.3-.6-.9-1-.9-1.7 0-.9.8-1.6 1.7-1.6H16a4 4 0 0 0 4-4C20 6.6 16.6 3 12 3z"></path>
+                <circle cx="7.5" cy="10.5" r="0.9" fill="currentColor" stroke="none"></circle>
+                <circle cx="10" cy="7.3" r="0.9" fill="currentColor" stroke="none"></circle>
+                <circle cx="14" cy="7.3" r="0.9" fill="currentColor" stroke="none"></circle>
+                <circle cx="16.5" cy="10.5" r="0.9" fill="currentColor" stroke="none"></circle>
+            </symbol>
+            <symbol id="icon-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="6" rx="1.5"></rect>
+                <rect x="3" y="14" width="18" height="6" rx="1.5"></rect>
+                <circle cx="7" cy="7" r="0.7" fill="currentColor" stroke="none"></circle>
+                <circle cx="7" cy="17" r="0.7" fill="currentColor" stroke="none"></circle>
+            </symbol>
+            <symbol id="icon-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"></path>
+                <path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"></path>
+                <path d="M8 3.5c-.5.7-.5 1.3 0 2"></path>
+                <path d="M11.5 3.5c-.5.7-.5 1.3 0 2"></path>
+            </symbol>
+            <symbol id="icon-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
+                <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"></path>
+                <path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path>
+            </symbol>
+            <symbol id="icon-branch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="2"></circle>
+                <circle cx="6" cy="18" r="2"></circle>
+                <circle cx="18" cy="6" r="2"></circle>
+                <path d="M6 8v8"></path>
+                <path d="M18 8a6 6 0 0 1-6 6"></path>
+            </symbol>
+            <symbol id="icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 3 21 8 12 13 3 8"></polygon>
+                <polyline points="3 13 12 18 21 13"></polyline>
+            </symbol>
+            <symbol id="icon-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="3" width="16" height="18" rx="1.5"></rect>
+                <path d="M8 8h8M8 12h8M8 16h5"></path>
+            </symbol>
+            <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v18H6.5A2.5 2.5 0 0 1 4 18.5v-13z"></path>
+                <path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v18h5.5a2.5 2.5 0 0 0 2.5-2.5v-13z"></path>
+            </symbol>
+            <symbol id="icon-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 19H7a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5 3.5 3.5 0 0 1 17.5 19z"></path>
+            </symbol>
+            <symbol id="icon-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l1.2 5.3L18 9l-4.8 1.7L12 16l-1.2-5.3L6 9l4.8-1.7L12 2z"></path>
+                <path d="M19 14l.6 2.4L22 17l-2.4.6L19 20l-.6-2.4L16 17l2.4-.6L19 14z"></path>
+            </symbol>
+            <symbol id="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                <circle cx="12" cy="13.5" r="3.3"></circle>
+            </symbol>
+            <symbol id="icon-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="6 11 12 5 18 11"></polyline>
+            </symbol>
+            <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </symbol>
+        </defs>
+    </svg>
 
-<!-- 아이콘 스프라이트 (외부 라이브러리 없이 직접 그린 인라인 SVG) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="8 6 3 12 8 18"></polyline>
-      <polyline points="16 6 21 12 16 18"></polyline>
-    </symbol>
-    <symbol id="icon-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3a9 9 0 1 0 0 18c1 0 1.6-.8 1.2-1.7-.3-.6-.9-1-.9-1.7 0-.9.8-1.6 1.7-1.6H16a4 4 0 0 0 4-4C20 6.6 16.6 3 12 3z"></path>
-      <circle cx="7.5" cy="10.5" r="0.9" fill="currentColor" stroke="none"></circle>
-      <circle cx="10" cy="7.3" r="0.9" fill="currentColor" stroke="none"></circle>
-      <circle cx="14" cy="7.3" r="0.9" fill="currentColor" stroke="none"></circle>
-      <circle cx="16.5" cy="10.5" r="0.9" fill="currentColor" stroke="none"></circle>
-    </symbol>
-    <symbol id="icon-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="4" width="18" height="6" rx="1.5"></rect>
-      <rect x="3" y="14" width="18" height="6" rx="1.5"></rect>
-      <circle cx="7" cy="7" r="0.7" fill="currentColor" stroke="none"></circle>
-      <circle cx="7" cy="17" r="0.7" fill="currentColor" stroke="none"></circle>
-    </symbol>
-    <symbol id="icon-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"></path>
-      <path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"></path>
-      <path d="M8 3.5c-.5.7-.5 1.3 0 2"></path>
-      <path d="M11.5 3.5c-.5.7-.5 1.3 0 2"></path>
-    </symbol>
-    <symbol id="icon-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
-      <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"></path>
-      <path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path>
-    </symbol>
-    <symbol id="icon-branch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="6" cy="6" r="2"></circle>
-      <circle cx="6" cy="18" r="2"></circle>
-      <circle cx="18" cy="6" r="2"></circle>
-      <path d="M6 8v8"></path>
-      <path d="M18 8a6 6 0 0 1-6 6"></path>
-    </symbol>
-    <symbol id="icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <polygon points="12 3 21 8 12 13 3 8"></polygon>
-      <polyline points="3 13 12 18 21 13"></polyline>
-    </symbol>
-    <symbol id="icon-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="4" y="3" width="16" height="18" rx="1.5"></rect>
-      <path d="M8 8h8M8 12h8M8 16h5"></path>
-    </symbol>
-    <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v18H6.5A2.5 2.5 0 0 1 4 18.5v-13z"></path>
-      <path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v18h5.5a2.5 2.5 0 0 0 2.5-2.5v-13z"></path>
-    </symbol>
-    <symbol id="icon-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M17.5 19H7a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5 3.5 3.5 0 0 1 17.5 19z"></path>
-    </symbol>
-    <symbol id="icon-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2l1.2 5.3L18 9l-4.8 1.7L12 16l-1.2-5.3L6 9l4.8-1.7L12 2z"></path>
-      <path d="M19 14l.6 2.4L22 17l-2.4.6L19 20l-.6-2.4L16 17l2.4-.6L19 14z"></path>
-    </symbol>
-    <symbol id="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-      <circle cx="12" cy="13.5" r="3.3"></circle>
-    </symbol>
-    <symbol id="icon-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="12" y1="19" x2="12" y2="5"></line>
-      <polyline points="6 11 12 5 18 11"></polyline>
-    </symbol>
-  </defs>
-</svg>
-
-<header class="site-header" id="siteHeader">
-  <div class="container">
-    <a href="index.html" class="logo">JW</a>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="myProfile.html" class="active">My Profile</a></li>
-        <li><a href="myClass.html">My Class</a></li>
-        <li><a href="myTrip.html">My Trip</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="page-header">
+    <header class="site-header" id="siteHeader">
     <div class="container">
-      <div class="profile-hero">
-        <div class="profile-photo">
-          <svg><use href="#icon-camera"></use></svg>
-          <span>사진을 추가해주세요</span>
-        </div>
-        <div class="profile-intro">
-          <p class="section-eyebrow">About Me</p>
-          <h1>조종원 · Profile</h1>
-          <p class="desc">사용자 경험을 고민하며 꾸준히 배우는 주니어 개발자입니다.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">Introduction</p>
-        <h2>소개</h2>
-        <p>
-          안녕하세요, 조종원입니다.<br> 사용자 관점에서 문제를 정의하고, 이를 코드로 풀어내는 과정을 좋아합니다.
-          작은 디테일이 전체 경험을 바꾼다고 믿으며, 꾸준한 학습과 기록을 통해 성장하고 있습니다.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">Skills</p>
-        <h2>기술 스택</h2>
-        <p>공부하고 다루어 본 기술입니다.</p>
-      </div>
-      <div class="card-grid">
-        <div class="card reveal">
-          <h3>Frontend</h3>
-          <p>사용자 화면을 만드는 데 사용하는 기술입니다.</p>
-          <div class="tag-list">
-            <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>HTML</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-palette"></use></svg>CSS</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>JavaScript</span>
-          </div>
-        </div>
-        <div class="card reveal">
-          <h3>Backend</h3>
-          <p>서버와 데이터 처리를 위해 학습 중인 기술입니다.</p>
-          <div class="tag-list">
-            <span class="tag"><svg class="tag-icon"><use href="#icon-server"></use></svg>Node.js</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-cup"></use></svg>Java</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-database"></use></svg>MySQL</span>
-          </div>
-        </div>
-        <div class="card reveal">
-          <h3>Tools</h3>
-          <p>협업과 개발 효율을 위해 사용하는 도구입니다.</p>
-          <div class="tag-list">
-            <span class="tag"><svg class="tag-icon"><use href="#icon-branch"></use></svg>Git</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>Figma</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-note"></use></svg>Notion</span>
-          </div>
-        </div>
-        <div class="card reveal">
-          <h3>SKALA (SK AI Leader Academy)</h3>
-          <p>AI 서비스 기획부터 배포까지 실무형 커리큘럼으로 학습 중입니다.</p>
-          <div class="tag-list">
-            <span class="tag"><svg class="tag-icon"><use href="#icon-book"></use></svg>AI 서비스 기초</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>AI 서비스화</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-cloud"></use></svg>배포·운영</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>생성형 AI</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">Career</p>
-        <h2>경력 · 교육</h2>
-        <p>지금까지의 배움과 활동 과정입니다. </p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <p class="timeline-date">2026.07 - 2026.12</p>
-          <h3>SKALA (SK AI Leader Academy) 수강 중</h3>
-          <p>AI 서비스 기초부터 배포·운영, 생성형 AI 서비스 개발까지 실무형 교육 과정을 수강하고 있습니다.</p>
-        </div>
-        <div class="timeline-item reveal">
-          <p class="timeline-date">2026.04 - 2026.5</p>
-          <h3>사이드 프로젝트 진행</h3>
-          <p>데이터 구조에 대응하는 금융 웹 대시보드 서비스 개발 프로젝트를 수행했습니다.</p>
-        </div>
-        <div class="timeline-item reveal">
-          <p class="timeline-date">2020.03 - 2026.02</p>
-          <h3>전남대학교 학사 졸업 (주전공: 통계학과, 복수전공: 데이터사이언스융합학)</h3>
-          <p>컴퓨터 관련 전공을 통해 개발 기초 역량을 다졌습니다.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">Projects</p>
-        <h2>프로젝트</h2>
-        <p>진행했던 프로젝트를 소개합니다. (샘플 콘텐츠)</p>
-      </div>
-      <div class="card-grid">
-        <div class="card reveal">
-          <h3>개인 포트폴리오 사이트</h3>
-          <p>자기소개, 일정, 여행 기록을 담은 개인 허브형 웹사이트입니다.</p>
-          <div class="tag-list">
-            <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>HTML</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-palette"></use></svg>CSS</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>JavaScript</span>
-          </div>
-        </div>
-        <div class="card reveal">
-          <h3>할 일 관리 앱</h3>
-          <p>일정을 등록하고 완료 여부를 체크할 수 있는 웹 앱입니다.</p>
-          <div class="tag-list">
-            <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>JavaScript</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>DOM</span>
-          </div>
-        </div>
-        <div class="card reveal">
-          <h3>여행 기록 갤러리</h3>
-          <p>다녀온 여행지를 사진과 함께 정리하는 페이지입니다.</p>
-          <div class="tag-list">
-            <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>CSS Grid</span>
-            <span class="tag"><svg class="tag-icon"><use href="#icon-palette"></use></svg>반응형</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="logo">JW</span>
-        <p>조종원의 개인 포트폴리오 허브입니다. 프로필, 일정, 여행 기록을 한곳에서 확인하실 수 있습니다.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Pages</h4>
+        <a href="index.html" class="logo">JW</a>
+        <nav class="main-nav">
         <ul>
-          <li><a href="myProfile.html">My Profile</a></li>
-          <li><a href="myClass.html">My Class</a></li>
-          <li><a href="myTrip.html">My Trip</a></li>
-          <li><a href="signUp.html">Sign Up</a></li>
+            <li><a href="myProfile.html" class="active">My Profile</a></li>
+            <li><a href="myClass.html">My Class</a></li>
+            <li><a href="myTrip.html">My Trip</a></li>
         </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:csjsyj1@gmail.com">csjsyj1@gmail.com</a></li>
-        </ul>
-      </div>
+        </nav>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 JW Portfolio. All rights reserved.</span>
-      <span>Made by 조종원</span>
-    </div>
-  </div>
-</footer>
+    </header>
 
-<button class="to-top" id="toTopBtn" aria-label="맨 위로 이동">
-  <svg><use href="#icon-arrow-up"></use></svg>
-</button>
+    <main>
+    <section class="page-header">
+        <div class="container">
+            <div class="profile-hero">
+                <div class="profile-photo">
+                    <img src="/media/조종원.jpg" alt="조종원 프로필 사진">
+                </div>
+                <div class="profile-intro">
+                    <p class="section-eyebrow">About Me</p>
+                    <h1>조종원</h1>
+                    <p class="desc">사용자 경험을 고민하며 꾸준히 배우는 주니어 개발자입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-  // 스크롤 시 요소가 화면에 들어오면 서서히 나타나는 효과
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Introduction</p>
+                <h2>소개</h2>
+                <p>
+                안녕하세요, 조종원입니다.<br> 사용자 관점에서 문제를 정의하고, 이를 코드로 풀어내는 과정을 좋아합니다.
+                작은 디테일이 전체 경험을 바꾼다고 믿으며, 꾸준한 학습과 기록을 통해 성장하고 있습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Skills</p>
+                <h2>기술 스택</h2>
+                <p>공부하고 다루어 본 기술입니다.</p>
+            </div>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <h3>Frontend</h3>
+                    <p>사용자 화면을 만드는 데 사용하는 기술입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>HTML</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-palette"></use></svg>CSS</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>JavaScript</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3>Backend</h3>
+                    <p>서버와 데이터 처리를 위해 학습 중인 기술입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-server"></use></svg>Node.js</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-cup"></use></svg>Java</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-database"></use></svg>MySQL</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3>Tools</h3>
+                    <p>협업과 개발 효율을 위해 사용하는 도구입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-branch"></use></svg>Git</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>Figma</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-note"></use></svg>Notion</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3>SKALA (SK AI Leader Academy)</h3>
+                    <p>AI 서비스 기획부터 배포까지 실무형 커리큘럼으로 학습 중입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-book"></use></svg>AI 서비스 기초</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>AI 서비스화</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-cloud"></use></svg>배포·운영</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>생성형 AI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Career</p>
+                <h2>경력 · 교육</h2>
+                <p>지금까지의 배움과 활동 과정입니다. </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <p class="timeline-date">2026.07 - 2026.12</p>
+                    <h3>SKALA (SK AI Leader Academy) 수강 중</h3>
+                    <p>AI 서비스 기초부터 배포·운영, 생성형 AI 서비스 개발까지 실무형 교육 과정을 수강하고 있습니다.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <p class="timeline-date">2025.09 - 2025.10</p>
+                    <h3>SK AI Dream Camp 2025</h3>
+                    <p>데이터 구조에 대응하는 금융 웹 대시보드 서비스 개발 프로젝트를 수행했습니다.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <p class="timeline-date">2020.03 - 2026.02</p>
+                    <h3>전남대학교 학사 졸업 <small>(주전공: 통계학과, 복수전공: 데이터사이언스융합학)</small></h3>
+                    <p>컴퓨터 관련 전공을 통해 개발 기초 역량을 다졌습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Projects</p>
+                <h2>프로젝트</h2>
+                <p>진행했던 프로젝트를 소개합니다.</p>
+            </div>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <h3>개인 포트폴리오 사이트</h3>
+                    <p>자기소개, 일정, 여행 기록을 담은 개인 허브형 웹사이트입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>HTML</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-palette"></use></svg>CSS</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>JavaScript</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3>할 일 관리 앱</h3>
+                    <p>일정을 등록하고 완료 여부를 체크할 수 있는 웹 앱입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>JavaScript</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>DOM</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3>여행 기록 갤러리</h3>
+                    <p>다녀온 여행지를 사진과 함께 정리하는 페이지입니다.</p>
+                    <div class="tag-list">
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>CSS Grid</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-palette"></use></svg>반응형</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="logo">JW</span>
+                    <p>조종원의 개인 포트폴리오 허브입니다. 프로필, 일정, 여행 기록을 한곳에서 확인하실 수 있습니다.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="myProfile.html">My Profile</a></li>
+                        <li><a href="myClass.html">My Class</a></li>
+                        <li><a href="myTrip.html">My Trip</a></li>
+                        <li><a href="signUp.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:csjsyj12@naver.com">csjsyj12@naver.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 JW Portfolio. All rights reserved.</span>
+                <span>Made by 조종원</span>
+            </div>
+        </div>
+    </footer>
+
+    <button class="to-top" id="toTopBtn" aria-label="맨 위로 이동">
+        <svg><use href="#icon-arrow-up"></use></svg>
+    </button>
+
+    <script>
+        // 스크롤 시 요소가 화면에 들어오면 서서히 나타나는 효과
+        var revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+                }
+            });
+            }, { threshold: 0.15 });
+            revealEls.forEach(function (el) { observer.observe(el); });
+        } else {
+            revealEls.forEach(function (el) { el.classList.add('is-visible'); });
         }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(function (el) { observer.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-  }
 
-  // 스크롤 시 헤더에 그림자 추가
-  var header = document.getElementById('siteHeader');
-  var toTopBtn = document.getElementById('toTopBtn');
-  window.addEventListener('scroll', function () {
-    var scrolled = window.scrollY > 10;
-    header.classList.toggle('scrolled', scrolled);
-    toTopBtn.classList.toggle('visible', window.scrollY > 400);
-  });
+        // 스크롤 시 헤더에 그림자 추가
+        var header = document.getElementById('siteHeader');
+        var toTopBtn = document.getElementById('toTopBtn');
+        window.addEventListener('scroll', function () {
+            var scrolled = window.scrollY > 10;
+            header.classList.toggle('scrolled', scrolled);
+            toTopBtn.classList.toggle('visible', window.scrollY > 400);
+        });
 
-  // 맨 위로 이동 버튼
-  toTopBtn.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-
+        // 맨 위로 이동 버튼
+        toTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+    
 </body>
 </html>
