@@ -58,7 +58,7 @@
             padding: 0 24px;
         }
 
-        /* ------ header ------ */
+        /* ----- Header ----- */
         .site-header {
             position: sticky;
             top: 0;
@@ -111,6 +111,57 @@
         .main-nav a.active {
             color: var(--color-accent);
             font-weight: bold;
+        }
+
+        /* ----- Header Auth ----- */
+        .header-auth {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-login-btn {
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            border: none;
+            cursor: pointer;
+            background: var(--color-accent);
+            color: #fff;
+            font-family: var(--font-sans);
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .header-login-btn:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(59, 74, 99, 0.25);
+        }
+
+        .header-user-chip {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .header-logout-btn {
+            padding: 7px 16px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            font-family: var(--font-sans);
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .header-logout-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
         }
 
         /* ----- Hero ----- */
@@ -305,7 +356,7 @@
             width: 100%;
         }
 
-        /* ----- footer ------ */
+        /* ----- Footer ----- */
         .site-footer {
             margin-top: 50px;
             background: var(--color-footer-bg);
@@ -373,7 +424,7 @@
 
         /* ----- Mini Tools ----- */
         .mini-tools {
-            padding: 80px 0;
+            padding: 120px 0;
             background: var(--color-surface);
             border-top: 1px solid var(--color-border);
             border-bottom: 1px solid var(--color-border);
@@ -468,22 +519,6 @@
             opacity: 0.8;
         }
 
-        .weather-controls {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .weather-controls select {
-            flex: 1;
-            padding: 9px 10px;
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            background: var(--color-surface);
-            font-family: var(--font-sans);
-            font-size: 13px;
-        }
-
         .weather-box {
             min-height: 88px;
             margin-bottom: 8px;
@@ -539,7 +574,7 @@
             color: #c0392b;
         }
 
-        /* ----- log-in ----- */
+        /* ----- Modal ----- */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -553,7 +588,11 @@
             pointer-events: none;
             transition: opacity 0.2s ease;
         }
-        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         .modal {
             width: 100%;
@@ -566,7 +605,10 @@
             transform: translateY(12px);
             transition: transform 0.2s ease;
         }
-        .modal-overlay.open .modal { transform: translateY(0); }
+
+        .modal-overlay.open .modal {
+            transform: translateY(0);
+        }
 
         .modal-close {
             position: absolute;
@@ -579,13 +621,32 @@
             background: var(--color-bg);
             color: var(--color-text-muted);
             font-size: 16px;
+            line-height: 1;
             cursor: pointer;
         }
 
-        .modal-body h3 { font-size: 18px; margin-bottom: 6px; }
-        .modal-body .modal-desc { font-size: 13px; color: var(--color-text-muted); margin-bottom: 18px; }
-        .modal-field { margin-bottom: 12px; }
-        .modal-field label { display: block; font-size: 12px; color: var(--color-text-muted); margin-bottom: 6px; }
+        .modal-body h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .modal-body .modal-desc {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-bottom: 18px;
+        }
+
+        .modal-field {
+            margin-bottom: 12px;
+        }
+
+        .modal-field label {
+            display: block;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            margin-bottom: 6px;
+        }
+
         .modal-field input {
             width: 100%;
             padding: 10px 12px;
@@ -594,7 +655,11 @@
             font-family: var(--font-sans);
             font-size: 14px;
         }
-        .modal-actions { margin-top: 16px; }
+
+        .modal-actions {
+            margin-top: 16px;
+        }
+
         .modal-result {
             font-size: 13px;
             margin-top: 16px;
@@ -605,39 +670,192 @@
             line-height: 1.7;
         }
 
-        .header-auth { display: flex; align-items: center; gap: 10px; }
-        
-        .header-login-btn {
-            padding: 8px 18px;
-            border-radius: 999px;
-            font-size: 12px;
+        .modal-bag-list {
+            margin-top: 6px;
+        }
+
+        .modal-bag-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 14px;
+        }
+
+        .modal-bag-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* ----- Updown Top 10 ----- */
+        .updown-top10 {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .updown-top10 h4 {
+            font-size: 13px;
             font-weight: 700;
-            border: none;
-            cursor: pointer;
-            background: var(--color-accent);
-            color: #fff;
-            font-family: var(--font-sans);
-            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+            margin-bottom: 10px;
         }
-        .header-login-btn:hover {
-            background: var(--color-accent-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(59, 74, 99, 0.25);
+
+        .updown-top10-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+            font-size: 13px;
+            border-bottom: 1px solid var(--color-border);
         }
-        .header-user-chip { font-size: 13px; font-weight: 700; color: var(--color-text); }
-        .header-logout-btn {
-            padding: 7px 16px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 600;
-            border: 1px solid var(--color-border);
-            background: transparent;
+
+        .updown-top10-list li:last-child {
+            border-bottom: none;
+        }
+
+        .updown-top10-rank {
+            width: 20px;
+            flex-shrink: 0;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .updown-top10-name {
+            flex: 1;
+            color: var(--color-text);
+        }
+
+        .updown-top10-tries {
             color: var(--color-text-muted);
-            cursor: pointer;
-            font-family: var(--font-sans);
-            transition: border-color 0.2s ease, color 0.2s ease;
+            font-size: 12px;
         }
-        .header-logout-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+        .updown-top10-empty {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* ----- Guestbook ----- */
+        .guestbook {
+            padding: 120px 0;
+        }
+
+        .guestbook-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .guestbook-form-shell {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 24px;
+            position: sticky;
+            top: calc(var(--header-height) + 24px);
+        }
+
+        .guestbook-form-shell h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .guestbook-form-desc {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+
+        .guestbook-author {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 10px;
+        }
+
+        .guestbook-textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 12px;
+        }
+
+        .guestbook-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .guestbook-error {
+            color: #c0392b;
+            font-size: 12px;
+            margin-top: -6px;
+            margin-bottom: 10px;
+            min-height: 16px;
+        }
+
+        .guestbook-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .guestbook-entry {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+        }
+
+        .guestbook-entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .guestbook-entry-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .guestbook-entry-time {
+            font-size: 11px;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+        }
+
+        .guestbook-entry-message {
+            font-size: 14px;
+            color: var(--color-text);
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .guestbook-empty {
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--color-text-muted);
+            font-size: 13px;
+            border: 1px dashed var(--color-border);
+            border-radius: var(--radius);
+        }
+
+        @media (max-width: 860px) {
+            .guestbook-layout {
+                grid-template-columns: 1fr;
+            }
+            .guestbook-form-shell {
+                position: static;
+            }
+        }
     </style>
 </head>
 <body>
@@ -669,7 +887,7 @@
             안녕하세요, 저는 <span>조종원</span>입니다.<br />
             더 나은 경험을 고민하는 개발자입니다.
             </h1>
-            <div id="heroCta">
+            <div class="hero-cta reveal" id="heroCta">
                 <a href="signUp.html" class="btn btn-primary">회원가입하고 소통하기</a>    
             </div>
             <button type="button" class="scroll-cue" id="scrollCue" aria-label="아래로 스크롤">
@@ -720,6 +938,23 @@
         </div>
     </aside>
 
+    <section class="guestbook" id="guestbook">
+        <div class="container">
+            <div class="section-header">
+                <p class="hero-eyebrow">Guestbook</p>
+                <h2>방명록</h2>
+                <p>다녀가신 분들이 남긴 메시지입니다. 이 브라우저에 계속 쌓여요.</p>
+            </div>
+            <div class="guestbook-layout">
+                <div class="guestbook-form-shell">
+                    <h3>메시지 남기기</h3>
+                    <div id="guestbookWriteArea"></div>
+                </div>
+                <div class="guestbook-list" id="guestbookList"></div>
+            </div>
+        </div>
+    </section>
+
     <footer class="site-footer">
         <div class="container">
             <div class="footer-top">
@@ -749,78 +984,268 @@
             </div>
         </div>
     </footer>
+
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" role="dialog" aria-modal="true">
             <button type="button" class="modal-close" id="modalClose" aria-label="닫기">&times;</button>
             <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
+
     <script>
-        // Up-Down 숫자 맞추기 게임 (prompt/alert 사용)
-        document.getElementById('startUpDown').addEventListener('click', function () {
-            var answer = Math.floor(Math.random() * 100) + 1;
-            var tries = 0;
-        
-            while (true) {
-            var guessStr = window.prompt('1부터 100 사이의 숫자를 입력하세요. (취소를 누르면 게임이 종료됩니다)');
-            if (guessStr === null) {
-                window.alert('게임을 종료합니다.');
-                return;
+        /* ----- Tools ----- */
+        var TOOLS = {
+            updown: {
+                render: function (body) {
+                    var answer = Math.floor(Math.random() * 100) + 1;
+                    var tries = 0;
+
+                    body.innerHTML =
+                        '<h3>Up-Down 숫자 맞추기</h3>' +
+                        '<p class="modal-desc">1부터 100 사이의 숫자를 맞혀보세요.</p>' +
+                        '<div class="modal-field">' +
+                            '<label for="updownInput">숫자 입력</label>' +
+                            '<input type="number" id="updownInput" min="1" max="100" />' +
+                        '</div>' +
+                        '<div class="modal-actions">' +
+                            '<button type="button" class="btn btn-primary btn-block" id="updownGuessBtn">확인</button>' +
+                        '</div>' +
+                        '<div class="modal-result" id="updownResult">몇 번 만에 맞히는지 도전해보세요!</div>' +
+                        '<div class="updown-top10">' +
+                            '<h4>Top 10 기록</h4>' +
+                            '<ol class="updown-top10-list" id="updownTop10List"></ol>' +
+                        '</div>';
+
+                    var input = body.querySelector('#updownInput');
+                    var resultEl = body.querySelector('#updownResult');
+                    var guessBtn = body.querySelector('#updownGuessBtn');
+                    var top10List = body.querySelector('#updownTop10List');
+
+                    renderUpdownTop10(top10List);
+
+                    function submitGuess() {
+                        var guess = parseInt(input.value, 10);
+                        if (isNaN(guess) || guess < 1 || guess > 100) {
+                            resultEl.textContent = '1부터 100 사이의 숫자를 입력해주세요.';
+                            return;
+                        }
+                        tries++;
+                        if (guess === answer) {
+                            resultEl.textContent = tries + '번 만에 정답을 맞히셨습니다! 정답은 ' + answer + '입니다.';
+                            input.disabled = true;
+                            guessBtn.disabled = true;
+
+                            if (isLoggedIn()) {
+                                saveUpdownScore(tries);
+                                renderUpdownTop10(top10List);
+                            } else {
+                                resultEl.textContent += ' (로그인하면 이 기록이 Top 10에 저장돼요)';
+                            }
+                        } else {
+                            resultEl.textContent = (guess < answer ? '더 큰 숫자입니다.' : '더 작은 숫자입니다.') + ' (' + tries + '번째 시도)';
+                            input.value = '';
+                            input.focus();
+                        }
+                    }
+
+                    guessBtn.addEventListener('click', submitGuess);
+                    input.addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter') submitGuess();
+                    });
+                    input.focus();
+                }
+            },
+
+            grade: {
+                render: function (body) {
+                    var subjects = ['통계수학', '수리통계학', '머신러닝'];
+
+                    var fieldsHtml = subjects.map(function (s, i) {
+                        return (
+                            '<div class="modal-field">' +
+                                '<label for="score' + i + '">' + s + ' 점수 (0~100)</label>' +
+                                '<input type="number" id="score' + i + '" min="0" max="100" />' +
+                            '</div>'
+                        );
+                    }).join('');
+
+                    body.innerHTML =
+                        '<h3>성적 계산기</h3>' +
+                        '<p class="modal-desc">과목별 점수를 입력하면 총점·평균·등급을 계산합니다.</p>' +
+                        fieldsHtml +
+                        '<div class="modal-actions">' +
+                            '<button type="button" class="btn btn-primary btn-block" id="calcGradeBtn">계산하기</button>' +
+                        '</div>' +
+                        '<div class="modal-result" id="gradeResult" style="display:none;"></div>';
+
+                    body.querySelector('#calcGradeBtn').addEventListener('click', function () {
+                        var total = 0;
+                        for (var i = 0; i < subjects.length; i++) {
+                            var v = parseInt(body.querySelector('#score' + i).value, 10);
+                            total += isNaN(v) ? 0 : v;
+                        }
+                        var average = total / subjects.length;
+                        var grade = average >= 90 ? 'A' : average >= 80 ? 'B' : average >= 70 ? 'C' : average >= 60 ? 'D' : 'F';
+
+                        var resultEl = body.querySelector('#gradeResult');
+                        resultEl.style.display = 'block';
+                        resultEl.innerHTML =
+                            '총점: <strong>' + total + '점</strong><br>' +
+                            '평균: <strong>' + average.toFixed(1) + '점</strong><br>' +
+                            '등급: <strong>' + grade + '</strong>';
+                    });
+                }
+            },
+
+            bag: {
+                render: function (body) {
+                    var bag = [
+                        { name: '노트북', count: 1 },
+                        { name: '노트', count: 2 },
+                        { name: '펜', count: 3 },
+                        { name: '이어폰', count: 1 }
+                    ];
+
+                    var itemsHtml = bag.map(function (item) {
+                        return '<li><span>' + item.name + '</span><span>' + item.count + '개</span></li>';
+                    }).join('');
+
+                    body.innerHTML =
+                        '<h3>내 가방 속 물건</h3>' +
+                        '<p class="modal-desc">가방에 들어있는 물건과 수량입니다.</p>' +
+                        '<ul class="modal-bag-list">' + itemsHtml + '</ul>';
+                }
+            },
+
+            login: {
+                render: function (body) {
+                    body.innerHTML =
+                        '<h3>로그인</h3>' +
+                        '<p class="modal-desc">가입하실 때 등록한 이메일과 비밀번호를 입력해주세요.</p>' +
+                        '<div class="modal-field">' +
+                            '<label for="loginEmailInput">이메일</label>' +
+                            '<input type="text" id="loginEmailInput" placeholder="example@email.com" />' +
+                        '</div>' +
+                        '<div class="modal-field">' +
+                            '<label for="loginPasswordInput">비밀번호</label>' +
+                            '<input type="password" id="loginPasswordInput" placeholder="비밀번호를 입력하세요" />' +
+                        '</div>' +
+                        '<div class="modal-actions">' +
+                            '<button type="button" class="btn btn-primary btn-block" id="loginSubmitBtn">로그인</button>' +
+                        '</div>' +
+                        '<div class="modal-result" id="loginResult" style="display:none;"></div>';
+
+                    var emailInput = body.querySelector('#loginEmailInput');
+                    var passwordInput = body.querySelector('#loginPasswordInput');
+                    var resultEl = body.querySelector('#loginResult');
+
+                    function submitLogin() {
+                        var email = emailInput.value.trim();
+                        var password = passwordInput.value;
+
+                        if (!email || !password) {
+                            resultEl.style.display = 'block';
+                            resultEl.textContent = '이메일과 비밀번호를 모두 입력해주세요.';
+                            return;
+                        }
+
+                        var users = [];
+                        try {
+                            users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+                        } catch (err) {
+                            users = [];
+                        }
+
+                        var matched = users.find(function (u) {
+                            return u.email === email && u.password === password;
+                        });
+
+                        if (!matched) {
+                            resultEl.style.display = 'block';
+                            resultEl.textContent = '이메일 또는 비밀번호가 일치하지 않습니다. 가입 이력이 없다면 먼저 회원가입해주세요.';
+                            return;
+                        }
+
+                        localStorage.setItem(SESSION_KEY, JSON.stringify({ name: matched.name, email: matched.email }));
+                        renderAuthState();
+                        closeModal();
+                    }
+
+                    body.querySelector('#loginSubmitBtn').addEventListener('click', submitLogin);
+                    passwordInput.addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter') submitLogin();
+                    });
+                    emailInput.focus();
+                }
             }
-        
-            var guess = parseInt(guessStr, 10);
-            if (isNaN(guess)) {
-                window.alert('숫자만 입력해주세요.');
-                continue;
-            }
-        
-            tries++;
-            if (guess === answer) {
-                window.alert(tries + '번 만에 정답을 맞히셨습니다! 정답은 ' + answer + '입니다.');
-                return;
-            }
-            window.alert(guess < answer ? '더 큰 숫자입니다.' : '더 작은 숫자입니다.');
-            }
-        });
-        
-        // 성적 계산기 (prompt/alert 사용)
-        document.getElementById('startGrade').addEventListener('click', function () {
-            var subjects = ['통계수학', '수리통계학', '머신러닝'];
-            var total = 0;
-        
-            for (var i = 0; i < subjects.length; i++) {
-            var scoreStr = window.prompt(subjects[i] + ' 점수를 입력하세요. (0~100)');
-            if (scoreStr === null) {
-                window.alert('계산을 취소했습니다.');
-                return;
-            }
-            var score = parseInt(scoreStr, 10);
-            if (isNaN(score)) score = 0;
-            total += score;
-            }
-        
-            var average = total / subjects.length;
-            var grade = average >= 90 ? 'A' : average >= 80 ? 'B' : average >= 70 ? 'C' : average >= 60 ? 'D' : 'F';
-            window.alert('총점: ' + total + '점\n평균: ' + average.toFixed(1) + '점\n등급: ' + grade);
-        });
-        
-        // 내 가방 보기 (배열 + alert 사용)
-        document.getElementById('startBag').addEventListener('click', function () {
-            var bag = [
-            { name: '노트북', count: 1 },
-            { name: '노트', count: 2 },
-            { name: '펜', count: 3 },
-            { name: '이어폰', count: 1 }
-            ];
-        
-            var message = '내 가방 속 물건 목록\n\n';
-            bag.forEach(function (item) {
-            message += item.name + ' - ' + item.count + '개\n';
+        };
+
+        /* ----- Updown Top 10 ----- */
+        var UPDOWN_SCORES_KEY = 'jwhub_updown_scores';
+
+        function getUpdownScores() {
+            try { return JSON.parse(localStorage.getItem(UPDOWN_SCORES_KEY)) || []; } catch (err) { return []; }
+        }
+
+        function saveUpdownScore(tries) {
+            var session = getSession();
+            if (!session) return;
+
+            var scores = getUpdownScores();
+            scores.push({ name: session.name, tries: tries, createdAt: Date.now() });
+            scores.sort(function (a, b) {
+                return a.tries - b.tries || a.createdAt - b.createdAt;
             });
-            window.alert(message);
+            scores = scores.slice(0, 10);
+            localStorage.setItem(UPDOWN_SCORES_KEY, JSON.stringify(scores));
+        }
+
+        function renderUpdownTop10(listEl) {
+            var scores = getUpdownScores();
+
+            if (scores.length === 0) {
+                listEl.innerHTML = '<li class="updown-top10-empty">아직 기록이 없어요. 로그인하고 첫 기록을 남겨보세요!</li>';
+                return;
+            }
+
+            listEl.innerHTML = scores.map(function (score, i) {
+                return (
+                    '<li>' +
+                        '<span class="updown-top10-rank">' + (i + 1) + '</span>' +
+                        '<span class="updown-top10-name">' + escapeGuestbookHtml(score.name) + '</span>' +
+                        '<span class="updown-top10-tries">' + score.tries + '번</span>' +
+                    '</li>'
+                );
+            }).join('');
+        }
+
+        var modalOverlay = document.getElementById('modalOverlay');
+        var modalBody = document.getElementById('modalBody');
+
+        function openModal(toolId) {
+            var tool = TOOLS[toolId];
+            if (!tool) return;
+            tool.render(modalBody);
+            modalOverlay.classList.add('open');
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('open');
+            modalBody.innerHTML = '';
+        }
+
+        document.getElementById('startUpDown').addEventListener('click', function () { openModal('updown'); });
+        document.getElementById('startGrade').addEventListener('click', function () { openModal('grade'); });
+        document.getElementById('startBag').addEventListener('click', function () { openModal('bag'); });
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function (e) {
+            if (e.target === modalOverlay) closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
         });
 
-        // 리빌 애니메이션 실행
+        /* ----- Scroll Reveal ----- */
         var revealEls = document.querySelectorAll('.reveal');
         if ('IntersectionObserver' in window) {
             var observer = new IntersectionObserver(function (entries) {
@@ -836,34 +1261,47 @@
             revealEls.forEach(function (el) { el.classList.add('is-visible'); });
         }
 
-        // Scroll 버튼 클릭 시 미니 툴 섹션으로 이동
         document.getElementById('scrollCue').addEventListener('click', function () {
             document.getElementById('miniTools').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // 로그인 상태 유지
-
+        /* ----- Auth ----- */
         var USERS_KEY = 'jwhub_users';
         var SESSION_KEY = 'jwhub_session';
 
         function getSession() {
-            try { return JSON.parse(localStorage.getItem(SESSION_KEY)); } catch (err) { return null; }
+            try {
+                return JSON.parse(localStorage.getItem(SESSION_KEY));
+            } catch (err) {
+                return null;
+            }
+        }
+
+        function isLoggedIn() {
+            return !!getSession();
         }
 
         function renderAuthState() {
             var session = getSession();
 
+            /* ----- Header ----- */
             var headerAuth = document.getElementById('headerAuth');
             headerAuth.innerHTML = '';
+
             if (session) {
                 var headerChip = document.createElement('span');
                 headerChip.className = 'header-user-chip';
                 headerChip.textContent = session.name + '님';
+
                 var headerLogoutBtn = document.createElement('button');
                 headerLogoutBtn.type = 'button';
                 headerLogoutBtn.className = 'header-logout-btn';
                 headerLogoutBtn.textContent = '로그아웃';
-                headerLogoutBtn.addEventListener('click', function () { localStorage.removeItem(SESSION_KEY); renderAuthState(); });
+                headerLogoutBtn.addEventListener('click', function () {
+                    localStorage.removeItem(SESSION_KEY);
+                    renderAuthState();
+                });
+
                 headerAuth.appendChild(headerChip);
                 headerAuth.appendChild(headerLogoutBtn);
             } else {
@@ -875,17 +1313,24 @@
                 headerAuth.appendChild(headerLoginBtn);
             }
 
+            /* ----- Hero CTA ----- */
             var cta = document.getElementById('heroCta');
             cta.innerHTML = '';
+
             if (session) {
                 var chip = document.createElement('span');
                 chip.className = 'welcome-chip';
                 chip.textContent = session.name + '님, 환영합니다 👋';
+
                 var logoutBtn = document.createElement('button');
                 logoutBtn.type = 'button';
                 logoutBtn.className = 'btn btn-secondary';
                 logoutBtn.textContent = '로그아웃';
-                logoutBtn.addEventListener('click', function () { localStorage.removeItem(SESSION_KEY); renderAuthState(); });
+                logoutBtn.addEventListener('click', function () {
+                    localStorage.removeItem(SESSION_KEY);
+                    renderAuthState();
+                });
+
                 cta.appendChild(chip);
                 cta.appendChild(logoutBtn);
             } else {
@@ -895,62 +1340,106 @@
                 link.textContent = '회원가입하고 소통하기';
                 cta.appendChild(link);
             }
+
+            renderGuestbookWriteArea();
         }
 
         renderAuthState();
 
-        //모달 열고 닫기
-        var TOOLS = {
-            login: {
-                render: function (body) {
-                    body.innerHTML =
-                        '<h3>로그인</h3>' +
-                        '<p class="modal-desc">가입하실 때 등록한 이메일과 비밀번호를 입력해주세요.</p>' +
-                        '<div class="modal-field"><label>이메일</label><input type="text" id="loginEmailInput" placeholder="example@email.com" /></div>' +
-                        '<div class="modal-field"><label>비밀번호</label><input type="password" id="loginPasswordInput" placeholder="비밀번호를 입력하세요" /></div>' +
-                        '<div class="modal-actions"><button type="button" class="btn btn-primary btn-block" id="loginSubmitBtn">로그인</button></div>' +
-                        '<div class="modal-result" id="loginResult" style="display:none;"></div>';
+        /* ----- Guestbook ----- */
+        var GUESTBOOK_KEY = 'jwhub_guestbook';
 
-                    var emailInput = body.querySelector('#loginEmailInput');
-                    var passwordInput = body.querySelector('#loginPasswordInput');
-                    var resultEl = body.querySelector('#loginResult');
+        function getGuestbookEntries() {
+            try { return JSON.parse(localStorage.getItem(GUESTBOOK_KEY)) || []; } catch (err) { return []; }
+        }
 
-                    body.querySelector('#loginSubmitBtn').addEventListener('click', function () {
-                        var email = emailInput.value.trim();
-                        var password = passwordInput.value;
-                        if (!email || !password) {
-                            resultEl.style.display = 'block';
-                            resultEl.textContent = '이메일과 비밀번호를 모두 입력해주세요.';
-                            return;
-                        }
-                        var users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
-                        var matched = users.find(function (u) { return u.email === email && u.password === password; });
-                        if (!matched) {
-                            resultEl.style.display = 'block';
-                            resultEl.textContent = '이메일 또는 비밀번호가 일치하지 않습니다.';
-                            return;
-                        }
-                        localStorage.setItem(SESSION_KEY, JSON.stringify({ name: matched.name, email: matched.email }));
-                        renderAuthState();
-                        closeModal();
-                    });
-                }
+        function saveGuestbookEntries(entries) {
+            localStorage.setItem(GUESTBOOK_KEY, JSON.stringify(entries));
+        }
+
+        function formatGuestbookTime(timestamp) {
+            var d = new Date(timestamp);
+            return d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0') +
+                ' ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+        }
+
+        function renderGuestbookList() {
+            var listEl = document.getElementById('guestbookList');
+            var entries = getGuestbookEntries().slice().sort(function (a, b) { return b.createdAt - a.createdAt; });
+
+            if (entries.length === 0) {
+                listEl.innerHTML = '<div class="guestbook-empty">아직 남겨진 메시지가 없어요. 첫 번째 메시지를 남겨보세요!</div>';
+                return;
             }
-        };
-        var modalOverlay = document.getElementById('modalOverlay');
-        var modalBody = document.getElementById('modalBody');
 
-        function openModal(toolId) {
-            TOOLS[toolId].render(modalBody);
-            modalOverlay.classList.add('open');
+            listEl.innerHTML = entries.map(function (entry) {
+                return (
+                    '<div class="guestbook-entry">' +
+                        '<div class="guestbook-entry-head">' +
+                            '<span class="guestbook-entry-name">' + escapeGuestbookHtml(entry.name) + '</span>' +
+                            '<span class="guestbook-entry-time">' + formatGuestbookTime(entry.createdAt) + '</span>' +
+                        '</div>' +
+                        '<p class="guestbook-entry-message">' + escapeGuestbookHtml(entry.message) + '</p>' +
+                    '</div>'
+                );
+            }).join('');
         }
-        function closeModal() {
-            modalOverlay.classList.remove('open');
-            modalBody.innerHTML = '';
+
+        function escapeGuestbookHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
         }
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', function (e) { if (e.target === modalOverlay) closeModal(); });
-        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+        function renderGuestbookWriteArea() {
+            var session = getSession();
+            var writeArea = document.getElementById('guestbookWriteArea');
+
+            if (!session) {
+                writeArea.innerHTML =
+                    '<p class="guestbook-form-desc">로그인하면 방명록에 메시지를 남길 수 있어요.</p>' +
+                    '<button type="button" class="btn btn-secondary btn-block" id="guestbookLoginBtn">로그인하러 가기</button>';
+                document.getElementById('guestbookLoginBtn').addEventListener('click', function () {
+                    openModal('login');
+                });
+                return;
+            }
+
+            writeArea.innerHTML =
+                '<p class="guestbook-author">' + escapeGuestbookHtml(session.name) + '님으로 작성</p>' +
+                '<textarea class="guestbook-textarea" id="guestbookMessageInput" placeholder="남기고 싶은 메시지를 적어주세요."></textarea>' +
+                '<p class="guestbook-error" id="guestbookError"></p>' +
+                '<button type="button" class="btn btn-primary btn-block" id="guestbookSubmitBtn">남기기</button>';
+
+            var messageInput = document.getElementById('guestbookMessageInput');
+            var errorEl = document.getElementById('guestbookError');
+
+            document.getElementById('guestbookSubmitBtn').addEventListener('click', function () {
+                var message = messageInput.value.trim();
+                if (!message) {
+                    errorEl.textContent = '메시지를 입력해주세요.';
+                    return;
+                }
+                errorEl.textContent = '';
+
+                var entries = getGuestbookEntries();
+                entries.push({
+                    id: Date.now(),
+                    name: session.name,
+                    message: message,
+                    createdAt: Date.now()
+                });
+                saveGuestbookEntries(entries);
+
+                messageInput.value = '';
+                renderGuestbookList();
+            });
+        }
+
+        renderGuestbookList();
+        renderGuestbookWriteArea();
     </script>   
     <script type="module" src="realtimeInfo.js"></script>
     
