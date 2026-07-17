@@ -275,6 +275,101 @@
     .trip-grid .reveal:nth-child(5) { transition-delay: 0.24s; }
     .trip-grid .reveal:nth-child(6) { transition-delay: 0.3s; }
 
+    /* ----- Trip Media (Highlight) ----- */
+    .trip-media {
+        padding: 48px 0;
+        background: var(--color-surface);
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .trip-media-header {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 32px;
+    }
+
+    .trip-media-header h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .trip-media-header p {
+        color: var(--color-text-muted);
+        font-size: 14px;
+    }
+
+    .trip-media-layout {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 28px;
+        align-items: stretch;
+    }
+
+    .trip-video-card {
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+    }
+
+    .trip-video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+    }
+
+    .trip-audio-card {
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .trip-audio-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--color-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+    }
+
+    .trip-audio-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: #fff;
+    }
+
+    .trip-audio-card h3 {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    .trip-audio-card p {
+        font-size: 13px;
+        color: var(--color-text-muted);
+        margin-bottom: 16px;
+    }
+
+    .trip-audio {
+        width: 100%;
+    }
+
+    @media (max-width: 860px) {
+        .trip-media-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+
     /* ===== Back to top ===== */
     .to-top {
         position: fixed;
@@ -436,6 +531,11 @@
                 <line x1="12" y1="19" x2="12" y2="5"></line>
                 <polyline points="6 11 12 5 18 11"></polyline>
             </symbol>
+                <symbol id="icon-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+            </symbol>
         </defs>
     </svg>
 
@@ -459,6 +559,35 @@
                 <p class="section-eyebrow">Travel</p>
                 <h1>여행 기록</h1>
                 <p>다녀온 여행지의 추억과 경험을 기록하는 공간입니다.</p>
+            </div>
+        </section>
+
+        <section class="trip-media">
+            <div class="container">
+                <div class="trip-media-header reveal">
+                    <p class="section-eyebrow">Highlight</p>
+                    <h2>여행 하이라이트</h2>
+                    <p>다녀온 여행지들을 짧은 영상과 배경음악으로 담아봤어요.</p>
+                </div>
+                <div class="trip-media-layout">
+                    <div class="trip-video-card reveal">
+                        <video class="trip-video" controls preload="metadata" poster="media/홋카이도.jpg">
+                            <source src="media/video.mp4" type="video/mp4" />
+                            브라우저가 video 태그를 지원하지 않습니다.
+                        </video>
+                    </div>
+                    <div class="trip-audio-card reveal">
+                        <div class="trip-audio-icon">
+                            <svg><use href="#icon-music"></use></svg>
+                        </div>
+                        <h3>여행 플레이리스트</h3>
+                        <p>여행하며 듣던 배경음악입니다.</p>
+                        <audio class="trip-audio" controls preload="none">
+                            <source src="media/music.mp3" type="audio/mpeg" />
+                            브라우저가 audio 태그를 지원하지 않습니다.
+                        </audio>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -642,7 +771,9 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // ================================================================
         // 로그인 상태 표시 (헤더 오른쪽) — index.html과 같은 저장 키를 공유한다.
+        // ================================================================
         var SESSION_KEY = 'jwhub_session';
 
         function getSession() {
@@ -678,8 +809,8 @@
                 headerAuth.appendChild(headerLoginLink);
             }
         }
+
         renderHeaderAuth();
-        
     </script>
     
 </body>
