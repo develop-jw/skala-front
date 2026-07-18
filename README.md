@@ -1,7 +1,55 @@
 # **SKALA-front**
+### **JW Hub — 조종원의 개인 포트폴리오 허브**
 
-저의 개인 포트폴리오 허브 사이트입니다.  
-자기소개, 기술 스택, 프로젝트, 일정, 여행 기록을 한곳에서 확인할 수 있고, 회원가입·로그인을 통해 방명록 작성이나 일정 편집 같은 추가 기능을 이용할 수 있습니다.
+자기소개, 기술 스택, 프로젝트, 일정, 여행 기록을 한곳에서 확인할 수 있고,   
+회원가입·로그인을 통해 방명록 작성이나 일정 편집 같은 추가 기능을 이용할 수 있습니다.
+
+## **화면 구성**
+
+<table>
+  <tr>
+    <th align="center">홈</th>
+    <th align="center">프로필</th>
+  </tr>
+  <tr>
+    <td align="center">
+        <img src="./screenshots/메인화면.png" width="400"/><br>
+        <sub>미니 게임, 실시간 날씨, 방명록 포함</sub>
+    </td>
+    <td align="center">
+        <img src="./screenshots/프로필.png" width="400"/><br>
+        <sub>소개, 기술 스택, 경력 및 교육, 프로젝트</sub>
+    </td>
+  </tr>
+  <tr>
+    <th align="center">일정</th>
+    <th align="center">여행 기록</th>
+  </tr>
+  <tr>
+    <td align="center">
+        <img src="./screenshots/시간표.png" width="400"/><br>
+        <sub>주간, 장기 일정 (로그인 시 편집 가능)</sub>
+    </td>
+    <td align="center">
+        <img src="./screenshots/여행.png" width="400"/><br>
+        <sub>국내외 사진, 하이라이트 영상 및 음악</sub>
+    </td>
+  </tr>
+  <tr>
+    <th align="center">회원가입</th>
+    <th align="center">회원가입 완료</th>
+  </tr>
+  <tr>
+    <td align="center">
+        <img src="./screenshots/회원가입.png" width="400"/><br>
+        <sub>이메일·비밀번호 기반 회원가입</sub>
+    </td>
+    <td align="center">
+        <img src="./screenshots/회원가입완료.png" width="400"/><br>
+        <sub>가입 완료 안내 및 추천 활동</sub>
+    </td>
+  </tr>
+</table>
 
 
 ## 페이지 구성
@@ -24,7 +72,7 @@
 - **일정 관리** — 주간 시간표 + 장기(월간·연간) 일정, 로그인해야 추가·수정·삭제 가능 (비로그인은 조회만)
 - **여행 기록** — 국내/해외 필터링 갤러리, 여행 하이라이트 영상·배경음악
 
-## **Stacks** 
+## **기술 스택(Stack)** 
  
 ### Environment
 ![VS Code](https://img.shields.io/badge/VISUAL%20STUDIO%20CODE-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
@@ -38,54 +86,6 @@
  
 ### API
 ![Open-Meteo](https://img.shields.io/badge/OPEN--METEO%20API-2E8B57?style=for-the-badge)
-
-
-## **화면 구성**
- 
-<table>
-  <tr>
-    <th align="center">홈</th>
-    <th align="center">프로필</th>
-  </tr>
-  <tr>
-    <td align="center">
-        <img src="./screenshots/메인화면.png" width="400"/><br>
-        <sub>미니 게임, 실시간 날씨, 방명록 포함</sub>
-    </td>
-    <td align="center">
-        <img src="./screenshots/프로필.png" width="400"/><br>
-        <sub>소개, 기술 스택, 경력 및 교육, 프로젝트</sub>
-    </td>
-  </tr>
-  <tr>
-    <th align="center">일정</th>
-    <th align="center">여행 기록</th>
-  </tr>
-  <tr>
-    <td align="center">
-        <img src="./screenshots/시간표.png" width="400"/>
-        <sub>주간, 장기 일정 (로그인 시 편집 가능)</sub>
-    </td>
-    <td align="center">
-        <img src="./screenshots/메인화면.png" width="400"/>
-        <sub>국내외 사진, 하이라이트 영상 및 음악</sub>
-    </td>
-  </tr>
-  <tr>
-    <th align="center">회원가입</th>
-    <th align="center">회원가입 완료</th>
-  </tr>
-  <tr>
-    <td align="center">
-        <img src="./screenshots/메인화면.png" width="400"/>
-        <sub>국내외 사진, 하이라이트 영상 및 음악</sub>
-    </td>
-    <td align="center">
-        <img src="./screenshots/메인화면.png" width="400"/>
-        <sub>국내외 사진, 하이라이트 영상 및 음악</sub>
-    </td>
-  </tr>
-</table>
 
 
 ## **아키텍처(Architecture)**
@@ -113,3 +113,7 @@
 ├── screenshots/           # README용 스크린샷
 └── README.md
 ```
+
+## **배운 점**
+- HTML/CSS/JavaScript 개념을 먼저 학습한 뒤 진행한 과제였기 때문에, AI의 도움을 단순히 받기보다 개념을 이해한 상태에서 활용할 수 있었습니다. 그 덕분에 코드를 작성했을 때 결과를 스스로 예측할 수 있었고, 이후 수정이 필요한 부분이 생겼을 때도 직접 보완 작업을 수행할 수 있었습니다.
+- 이번 과제를 통해 개발자에게 필수적인 포트폴리오를 실제 웹사이트 형태로 구축해보면서, 사용자에게 어떤 정보를 전달해야 하는지, 어떤 콘텐츠를 제공하는 것이 적절한지, 어떤 디자인을 선택해야 하는지에 대한 감각을 익힐 수 있었습니다.
