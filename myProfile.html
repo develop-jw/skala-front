@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile · JW Portfolio</title>
     <style>
-        /* ----- Reset ----- */
         * {
             margin: 0;
             padding: 0;
@@ -300,7 +299,7 @@
         }
 
         .project-card.is-expanded .project-detail {
-            max-height: 240px;
+            max-height: 420px;
         }
 
         .project-detail p {
@@ -630,7 +629,7 @@
         <div class="container">
             <div class="profile-hero">
                 <div class="profile-photo">
-                    <img src="/media/조종원.jpg" alt="조종원 프로필 사진">
+                    <img src="/media/조종원.jpg" alt="조종원 프로필 사진">
                 </div>
                 <div class="profile-intro">
                     <p class="section-eyebrow">About Me</p>
@@ -761,29 +760,70 @@
                 <p>진행했던 프로젝트를 소개합니다.</p>
             </div>
             <div class="card-grid">
-                <div class="card reveal">
-                    <h3>개인 포트폴리오 사이트</h3>
-                    <p>자기소개, 일정, 여행 기록을 담은 개인 허브형 웹사이트입니다.</p>
+                <div class="card project-card reveal">
+                    <h3>동양배 최적 생육 온도 예측</h3>
+                    <p>동양배 꽃 만개 후 일수에 따른 과당 함량이 최대가 되는 최고기온의 조건을 분석한 연구입니다.</p>
                     <div class="tag-list">
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>HTML</span>
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-palette"></use></svg>CSS</span>
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>JavaScript</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>GRU-Autoencoder</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-database"></use></svg>DBSCAN</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>SVR</span>
+                    </div>
+                    <button type="button" class="project-toggle">
+                        <span class="project-toggle-label">자세히 보기</span>
+                        <svg class="project-chevron"><use href="#icon-chevron-down"></use></svg>
+                    </button>
+                    <div class="project-detail">
+                        <p>
+                            기간: 2024.05 ~ 2024.12 (8개월)<br>
+                            팀 구성: 3인 (석사 연구원 1명, 대학생 1명, 본인)<br>
+                            담당 역할: 데이터 전처리, 모델 설계, 분석<br><br>
+                            GRU-Autoencoder 기반 특성 추출 → DBSCAN 기반 당 함량 최대 시점 필터링 → SVR 기반 예측 순서로 진행했습니다.
+                            MSE 1.08, R² 0.81의 결과를 도출했으며, 데이터 수 제한이라는 현실적 제약을 인식하고 추가 데이터 확보의 필요성을 도출했습니다.
+                        </p>
                     </div>
                 </div>
-                <div class="card reveal">
-                    <h3>할 일 관리 앱</h3>
-                    <p>일정을 등록하고 완료 여부를 체크할 수 있는 웹 앱입니다.</p>
+                <div class="card project-card reveal">
+                    <h3>뇌 MRI 종양 분할 성능 개선 프로젝트</h3>
+                    <p>의료 영상 데이터를 활용해 뇌 MRI 이미지의 종양 분할 성능을 개선하는 캡스톤 연구입니다.</p>
                     <div class="tag-list">
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>JavaScript</span>
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>DOM</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>Python</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>PyTorch</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-sparkles"></use></svg>U-Net</span>
+                    </div>
+                    <button type="button" class="project-toggle">
+                        <span class="project-toggle-label">자세히 보기</span>
+                        <svg class="project-chevron"><use href="#icon-chevron-down"></use></svg>
+                    </button>
+                    <div class="project-detail">
+                        <p>
+                            기간: 2025.09 ~ 2025.12 (4개월)<br>
+                            팀 구성: 3인 팀 프로젝트 (창의융합DS 캡스톤)<br>
+                            담당 역할: 데이터 전처리, 소형 종양 탐지 성능 분석<br><br>
+                            데이터 속성 기반 층화 분할 → 결측 이미지에 대한 추가 채널 구축 → ResU-Net 모델 기반 종양 분할 순서로 진행했습니다.
+                            IoU 0.89, Dice 0.925의 결과를 도출했으며, 추가 성능 검증을 위해 테스트 데이터 셋에 대한 F1 Score 95.24%를 확인했습니다.
+                        </p>
                     </div>
                 </div>
-                <div class="card reveal">
-                    <h3>여행 기록 갤러리</h3>
-                    <p>다녀온 여행지를 사진과 함께 정리하는 페이지입니다.</p>
+                <div class="card project-card reveal">
+                    <h3>바이브코딩 대시보드 제작</h3>
+                    <p>일관된 방식으로 투자 데이터를 시각화하고 해석하는 데이터 기반 투자 대시보드 서비스입니다.</p>
                     <div class="tag-list">
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-layers"></use></svg>CSS Grid</span>
-                        <span class="tag"><svg class="tag-icon"><use href="#icon-palette"></use></svg>반응형</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-code"></use></svg>Python</span>
+                        <span class="tag"><svg class="tag-icon"><use href="#icon-cloud"></use></svg>Streamlit</span>
+                    </div>
+                    <button type="button" class="project-toggle">
+                        <span class="project-toggle-label">자세히 보기</span>
+                        <svg class="project-chevron"><use href="#icon-chevron-down"></use></svg>
+                    </button>
+                    <div class="project-detail">
+                        <p>
+                            기간: 2026.04.30 ~ 2026.05.14<br>
+                            팀 구성: 3인 (대학생 2명, 본인)<br>
+                            담당 역할: 데이터 분할 방법 정의, 대시보드 설계<br><br>
+                            데이터 특성에 따른 1차 기준(시계열, 거래, 포트폴리오)과 데이터 구조에 따른 2차 기준(1D, 2D, ND)을 설정하고,
+                            각 기준에 따른 투자 지표 계산 방식 및 시각화 선택 방식을 정의한 후 바이브코딩을 통해 대시보드를 구축했습니다.
+                            시장 지표 정보와 분석 근거를 제공하는 화면을 추가해 서비스의 다양한 기능을 제공했습니다.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -894,6 +934,18 @@
         }
 
         renderHeaderAuth();
+
+        /* ----- Project Toggle ----- */
+        var projectToggles = document.querySelectorAll('.project-toggle');
+        projectToggles.forEach(function (btn) {
+            var card = btn.closest('.project-card');
+            var label = btn.querySelector('.project-toggle-label');
+
+            btn.addEventListener('click', function () {
+                var isExpanded = card.classList.toggle('is-expanded');
+                label.textContent = isExpanded ? '접기' : '자세히 보기';
+            });
+        });
     </script>
     
 </body>
