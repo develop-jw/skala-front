@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Trip · JW Portfolio</title>
+    <title>My Trip - JW Hub</title>
     <style>
-    /* ===== Reset & Base ===== */
     * {
         margin: 0;
         padding: 0;
@@ -55,7 +54,7 @@
         padding: 0 24px;
     }
 
-    /* ===== Header ===== */
+    /* ----- Header ----- */
     .site-header {
         position: sticky;
         top: 0;
@@ -114,7 +113,7 @@
         color: var(--color-accent);
     }
 
-    /* ===== Page header ===== */
+    /* ----- Page Header ----- */
     .page-header {
         padding: 56px 0 40px;
         text-align: center;
@@ -145,7 +144,7 @@
         padding: 48px 0 96px;
     }
 
-    /* ===== Filter ===== */
+    /* ----- Filter ----- */
     .filter-bar {
         display: flex;
         gap: 10px;
@@ -178,7 +177,7 @@
         color: #fff;
     }
 
-    /* ===== Gallery ===== */
+    /* ----- Gallery ----- */
     .trip-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -263,7 +262,7 @@
         color: var(--color-text-muted);
     }
 
-    /* ===== Scroll reveal ===== */
+    /* ----- Scroll Reveal ----- */
     .reveal {
         opacity: 0;
         transform: translateY(24px);
@@ -281,7 +280,7 @@
     .trip-grid .reveal:nth-child(5) { transition-delay: 0.24s; }
     .trip-grid .reveal:nth-child(6) { transition-delay: 0.3s; }
 
-    /* ----- Trip Media (Highlight) ----- */
+    /* ----- Trip Media ----- */
     .trip-media {
         padding: 48px 0;
         background: var(--color-surface);
@@ -318,12 +317,16 @@
         border: 1px solid var(--color-border);
         border-radius: var(--radius);
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .trip-video {
         display: block;
         width: 100%;
-        aspect-ratio: 16 / 9;
+        height: auto;
+        max-height: 520px;
         background: #000;
     }
 
@@ -376,7 +379,7 @@
         }
     }
 
-    /* ===== Back to top ===== */
+    /* ----- Back To Top ----- */
     .to-top {
         position: fixed;
         right: 24px;
@@ -414,7 +417,7 @@
         stroke: #fff;
     }
 
-    /* ===== Footer ===== */
+    /* ----- Footer ----- */
     .site-footer {
         background: var(--color-footer-bg);
         color: var(--color-footer-text);
@@ -472,7 +475,7 @@
         color: #6b7280;
     }
 
-    /* ===== Responsive ===== */
+    /* ----- Responsive ----- */
     @media (max-width: 720px) {
     .main-nav ul {
         gap: 18px;
@@ -490,7 +493,7 @@
     }
     }
 
-    /* ----- Header auth (로그인 버튼 영역) ----- */
+    /* ----- Header Auth ----- */
     .header-auth { display: flex; align-items: center; gap: 10px; }
     .header-login-btn {
         padding: 8px 18px;
@@ -607,7 +610,7 @@
                 <div class="trip-grid" id="tripGrid">
                     <div class="trip-card reveal" data-category="domestic">
                         <div class="trip-photo">
-                            <img src="media/부산.jpg" alt="부산 여행 사진">
+                            <img src="media/부산.jpg" alt="부산 여행 사진">
                         </div>
                         <div class="trip-body">
                             <div class="trip-meta">
@@ -635,7 +638,7 @@
 
                     <div class="trip-card reveal" data-category="domestic">
                         <div class="trip-photo">
-                            <img src="media/강릉.jpg" alt="강릉 여행 사진">
+                            <img src="media/강릉.jpg" alt="강릉 여행 사진">
                         </div>
                         <div class="trip-body">
                             <div class="trip-meta">
@@ -649,7 +652,7 @@
 
                     <div class="trip-card reveal" data-category="abroad">
                         <div class="trip-photo">
-                            <img src="media/후쿠오카.jpg" alt="후쿠오카 여행 사진">
+                            <img src="media/후쿠오카.jpg" alt="후쿠오카 여행 사진">
                         </div>
                         <div class="trip-body">
                             <div class="trip-meta">
@@ -663,7 +666,7 @@
 
                     <div class="trip-card reveal" data-category="abroad">
                         <div class="trip-photo">
-                            <img src="media/도쿄.jpg" alt="도쿄 여행 사진">
+                            <img src="media/도쿄.jpg" alt="도쿄 여행 사진">
                         </div>
                         <div class="trip-body">
                             <div class="trip-meta">
@@ -677,7 +680,7 @@
 
                     <div class="trip-card reveal" data-category="abroad">
                         <div class="trip-photo">
-                            <img src="media/코타키나발루.jpg" alt="코타키나발루">
+                            <img src="media/코타키나발루.jpg" alt="코타키나발루">
                         </div>
                         <div class="trip-body">
                             <div class="trip-meta">
@@ -728,7 +731,7 @@
     </button>
 
     <script>
-        // 스크롤 리빌
+        /* ----- Scroll Reveal ----- */
         var revealEls = document.querySelectorAll('.reveal');
         if ('IntersectionObserver' in window) {
             var observer = new IntersectionObserver(function (entries) {
@@ -744,7 +747,7 @@
             revealEls.forEach(function (el) { el.classList.add('is-visible'); });
         }
 
-        // 국내/해외 필터
+        /* ----- Filter ----- */
         var filterBtns = document.querySelectorAll('.filter-btn');
         var tripCards = document.querySelectorAll('.trip-card');
         filterBtns.forEach(function (btn) {
@@ -759,7 +762,7 @@
             });
         });
 
-        // 헤더 그림자 + 맨 위로 이동 버튼
+        /* ----- Header Scroll ----- */
         var header = document.getElementById('siteHeader');
         var toTopBtn = document.getElementById('toTopBtn');
         window.addEventListener('scroll', function () {
@@ -770,9 +773,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ================================================================
-        // 로그인 상태 표시 (헤더 오른쪽) — index.html과 같은 저장 키를 공유한다.
-        // ================================================================
+        /* ----- Auth ----- */
         var SESSION_KEY = 'jwhub_session';
 
         function getSession() {
