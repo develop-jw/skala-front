@@ -11,6 +11,8 @@ var form = document.getElementById('signUpForm');
             password: document.getElementById('passwordError'),
             passwordConfirm: document.getElementById('passwordConfirmError')
         };
+        var interestField = document.getElementById('interest');
+        var messageField = document.getElementById('message');
 
         function setError(key, message) {
             errors[key].textContent = message;
@@ -87,5 +89,17 @@ var form = document.getElementById('signUpForm');
             users.push({ name: name, email: email, password: password });
             localStorage.setItem(USERS_KEY, JSON.stringify(users));
             localStorage.setItem(SESSION_KEY, JSON.stringify({ name: name, email: email }));
-            window.location.href = 'signUpResult.html?name=' + encodeURIComponent(name);
+
+            // action="signUpResult.html" method="get"이 실제로 전달하는 것과 동일한 방식으로
+            // (비밀번호는 URL에 남기지 않기 위해) 필요한 값만 쿼리 문자열로 구성해 이동한다.
+            var params = new URLSearchParams({
+                name: name,
+                interest: interestField ? interestField.value : '',
+                message: messageField ? messageField.value.trim() : ''
+            });
+            window.location.href = 'signUpResult.html?' + params.toString();
+        });
+
+        form.addEventListener('reset', function () {
+            Object.keys(errors).forEach(function (key) { setError(key, ''); });
         });

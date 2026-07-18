@@ -1,4 +1,4 @@
-/* ----- Scroll Reveal ----- */
+        /* ----- Scroll Reveal ----- */
         var revealEls = document.querySelectorAll('.reveal');
         if ('IntersectionObserver' in window) {
             var observer = new IntersectionObserver(function (entries) {

@@ -31,28 +31,52 @@
 
         <section>
             <div class="container">
-                <form class="form-shell" id="signUpForm" novalidate>
-                    <div class="form-group">
-                        <label for="name">이름</label>
-                        <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" />
-                        <p class="form-error" id="nameError"></p>
+                <form class="form-shell" id="signUpForm" action="signUpResult.html" method="get" novalidate>
+                    <fieldset class="form-fieldset">
+                        <legend>기본 정보</legend>
+                        <div class="form-group">
+                            <label for="name">이름</label>
+                            <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required />
+                            <p class="form-error" id="nameError"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">이메일</label>
+                            <input type="text" id="email" name="email" placeholder="example@email.com" required />
+                            <p class="form-error" id="emailError"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">비밀번호</label>
+                            <input type="password" id="password" name="password" placeholder="8자 이상 입력해주세요" required />
+                            <p class="form-error" id="passwordError"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordConfirm">비밀번호 확인</label>
+                            <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 다시 입력해주세요" required />
+                            <p class="form-error" id="passwordConfirmError"></p>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>추가 정보</legend>
+                        <div class="form-group">
+                            <label for="interest">관심 분야</label>
+                            <select id="interest" name="interest">
+                                <option value="guestbook">방명록</option>
+                                <option value="class">일정 관리</option>
+                                <option value="trip">여행 기록</option>
+                                <option value="game">미니 게임</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">가입 인사말 (선택)</label>
+                            <textarea id="message" name="message" placeholder="간단한 인사말을 남겨보세요" rows="3"></textarea>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">회원가입</button>
+                        <button type="reset" class="btn btn-secondary">초기화</button>
                     </div>
-                    <div class="form-group">
-                        <label for="email">이메일</label>
-                        <input type="text" id="email" name="email" placeholder="example@email.com" />
-                        <p class="form-error" id="emailError"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">비밀번호</label>
-                        <input type="password" id="password" name="password" placeholder="8자 이상 입력해주세요" />
-                        <p class="form-error" id="passwordError"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordConfirm">비밀번호 확인</label>
-                        <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 다시 입력해주세요" />
-                        <p class="form-error" id="passwordConfirmError"></p>
-                    </div>
-                    <button type="submit" class="btn btn-primary">회원가입</button>
                     <p class="form-note">가입 후 <a href="../index.html">홈</a>에서 계속 둘러보실 수 있어요.</p>
                 </form>
             </div>

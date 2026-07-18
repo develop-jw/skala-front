@@ -1,4 +1,3 @@
-/* ----- Reset ----- */
 * {
     margin: 0;
     padding: 0;
@@ -2072,6 +2071,73 @@ body.page-signup .form-error {
         min-height: 16px;
     }
 
+body.page-signup .form-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 28px;
+}
+
+body.page-signup .form-fieldset:last-of-type {
+    margin-bottom: 0;
+}
+
+body.page-signup .form-fieldset legend {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    padding: 0;
+    margin-bottom: 18px;
+}
+
+body.page-signup .form-group select,
+body.page-signup .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-bg);
+    transition: border-color 0.2s ease;
+}
+
+body.page-signup .form-group select:focus,
+body.page-signup .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+body.page-signup .form-group textarea {
+    resize: vertical;
+}
+
+body.page-signup .form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+body.page-signup .form-actions .btn {
+    width: auto;
+    flex: 1;
+}
+
+body.page-signup .form-actions .btn-primary {
+    margin-top: 0;
+}
+
+body.page-signup .btn-secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+}
+
+body.page-signup .btn-secondary:hover {
+    border-color: var(--color-accent);
+}
+
 body.page-signup .btn {
         display: inline-block;
         width: 100%;
@@ -2175,6 +2241,61 @@ body.page-signup-result .result-shell p {
         color: var(--color-text-muted);
         margin-bottom: 32px;
     }
+
+body.page-signup-result .result-extra {
+    text-align: left;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin: -8px 0 28px;
+}
+
+body.page-signup-result .result-extra:empty {
+    display: none;
+}
+
+body.page-signup-result .result-extra p {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+body.page-signup-result .result-extra p:last-child {
+    margin-bottom: 0;
+}
+
+body.page-signup-result .result-extra strong {
+    color: var(--color-text);
+}
+
+body.page-signup-result .result-extra-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+}
+
+body.page-signup-result .result-extra-list {
+    list-style: disc;
+    padding-left: 18px;
+    margin-bottom: 14px;
+}
+
+body.page-signup-result .result-extra-list li {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+body.page-signup-result .result-extra-note {
+    text-align: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+}
 
 body.page-signup-result .result-actions {
         display: flex;
