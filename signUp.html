@@ -445,6 +445,26 @@
             return;
             }
 
+            // 가입자 목록(USERS_KEY)에 추가하고, 로그인 세션(SESSION_KEY)을 바로 생성한다.
+            var USERS_KEY = 'jwhub_users';
+            var SESSION_KEY = 'jwhub_session';
+
+            var users = [];
+            try {
+                users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+            } catch (err) {
+                users = [];
+            }
+
+            var alreadyExists = users.some(function (u) { return u.email === email; });
+            if (alreadyExists) {
+                setError('email', '이미 가입된 이메일입니다.');
+                return;
+            }
+
+            users.push({ name: name, email: email, password: password });
+            localStorage.setItem(USERS_KEY, JSON.stringify(users));
+            localStorage.setItem(SESSION_KEY, JSON.stringify({ name: name, email: email }));
             window.location.href = 'signUpResult.html?name=' + encodeURIComponent(name);
         });
     </script>

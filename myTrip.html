@@ -388,6 +388,40 @@
         transition: none;
     }
     }
+
+    /* ----- Header auth (로그인 버튼 영역) ----- */
+    .header-auth { display: flex; align-items: center; gap: 10px; }
+    .header-login-btn {
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        background: var(--color-accent);
+        color: #fff;
+        font-family: var(--font-sans);
+        transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .header-login-btn:hover {
+        background: var(--color-accent-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(59, 74, 99, 0.25);
+    }
+    .header-user-chip { font-size: 13px; font-weight: 700; color: var(--color-text); }
+    .header-logout-btn {
+        padding: 7px 16px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        border: 1px solid var(--color-border);
+        background: transparent;
+        color: var(--color-text-muted);
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .header-logout-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
     </style>
 </head>
 <body>
@@ -415,6 +449,7 @@
                     <li><a href="myTrip.html" class="active">My Trip</a></li>
                 </ul>
             </nav>
+            <div class="header-auth" id="headerAuth"></div>
         </div>
     </header>
 
@@ -606,6 +641,45 @@
         toTopBtn.addEventListener('click', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // 로그인 상태 표시 (헤더 오른쪽) — index.html과 같은 저장 키를 공유한다.
+        var SESSION_KEY = 'jwhub_session';
+
+        function getSession() {
+            try { return JSON.parse(localStorage.getItem(SESSION_KEY)); } catch (err) { return null; }
+        }
+
+        function renderHeaderAuth() {
+            var session = getSession();
+            var headerAuth = document.getElementById('headerAuth');
+            headerAuth.innerHTML = '';
+
+            if (session) {
+                var headerChip = document.createElement('span');
+                headerChip.className = 'header-user-chip';
+                headerChip.textContent = session.name + '님';
+
+                var headerLogoutBtn = document.createElement('button');
+                headerLogoutBtn.type = 'button';
+                headerLogoutBtn.className = 'header-logout-btn';
+                headerLogoutBtn.textContent = '로그아웃';
+                headerLogoutBtn.addEventListener('click', function () {
+                    localStorage.removeItem(SESSION_KEY);
+                    renderHeaderAuth();
+                });
+
+                headerAuth.appendChild(headerChip);
+                headerAuth.appendChild(headerLogoutBtn);
+            } else {
+                var headerLoginLink = document.createElement('a');
+                headerLoginLink.href = 'index.html';
+                headerLoginLink.className = 'header-login-btn';
+                headerLoginLink.textContent = '로그인';
+                headerAuth.appendChild(headerLoginLink);
+            }
+        }
+        renderHeaderAuth();
+        
     </script>
     
 </body>

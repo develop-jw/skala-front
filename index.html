@@ -115,6 +115,8 @@
 
         /* ----- Hero ----- */
         .hero {
+            position: relative;
+            overflow: hidden;
             min-height: calc(100vh - var(--header-height));
             display: flex;
             flex-direction: column;
@@ -122,6 +124,126 @@
             justify-content: center;
             text-align: center;
             padding: 80px 24px;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.28;
+            z-index: 0;
+            animation: drift 20s ease-in-out infinite alternate;
+        }
+
+        .hero-blob.one {
+            width: 380px;
+            height: 380px;
+            background: #3b4a63;
+            top: -100px;
+            left: -80px;
+        }
+
+        .hero-blob.two {
+            width: 320px;
+            height: 320px;
+            background: #1f8a70;
+            bottom: -120px;
+            right: -60px;
+            animation-delay: -8s;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0) scale(1);}
+            to {transform: translate(36px, 24px) scale(1.1);}
+        }
+
+        .hero-chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .hero-chip {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            color: var(--color-text-muted);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .welcome-chip {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+         .scroll-cue {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: var(--font-sans);
+        }
+ 
+        .scroll-cue svg {
+            width: 16px;
+            height: 16px;
+            animation: bounce 1.8s infinite;
+        }
+ 
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+ 
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+ 
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+ 
+        @media (prefers-reduced-motion: reduce) {
+            .hero-blob, .scroll-cue svg {
+                animation: none;
+            }
+            .reveal {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
         }
 
         .hero-eyebrow {
@@ -416,6 +538,106 @@
             font-size: 13px;
             color: #c0392b;
         }
+
+        /* ----- log-in ----- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 24, 31, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+        .modal {
+            width: 100%;
+            max-width: 420px;
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            padding: 32px 28px 28px;
+            position: relative;
+            box-shadow: 0 24px 60px rgba(20, 24, 31, 0.25);
+            transform: translateY(12px);
+            transition: transform 0.2s ease;
+        }
+        .modal-overlay.open .modal { transform: translateY(0); }
+
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: none;
+            background: var(--color-bg);
+            color: var(--color-text-muted);
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .modal-body h3 { font-size: 18px; margin-bottom: 6px; }
+        .modal-body .modal-desc { font-size: 13px; color: var(--color-text-muted); margin-bottom: 18px; }
+        .modal-field { margin-bottom: 12px; }
+        .modal-field label { display: block; font-size: 12px; color: var(--color-text-muted); margin-bottom: 6px; }
+        .modal-field input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-family: var(--font-sans);
+            font-size: 14px;
+        }
+        .modal-actions { margin-top: 16px; }
+        .modal-result {
+            font-size: 13px;
+            margin-top: 16px;
+            padding: 14px;
+            border-radius: 8px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            line-height: 1.7;
+        }
+
+        .header-auth { display: flex; align-items: center; gap: 10px; }
+        
+        .header-login-btn {
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            background: var(--color-accent);
+            color: #fff;
+            font-family: var(--font-sans);
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
+        .header-login-btn:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(59, 74, 99, 0.25);
+        }
+        .header-user-chip { font-size: 13px; font-weight: 700; color: var(--color-text); }
+        .header-logout-btn {
+            padding: 7px 16px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            font-family: var(--font-sans);
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+        .header-logout-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
     </style>
 </head>
 <body>
@@ -429,17 +651,31 @@
                 <li><a href="myTrip.html">My Trip</a></li>
             </ul>
             </nav>
+            <div class="header-auth" id="headerAuth"></div>
         </div>
     </header>
 
     <main>
         <section class="hero">
-            <p class="hero-eyebrow">Welcome to JW Website Hub!</p>
-            <h1>
+            <div class="hero-blob one"></div>
+            <div class="hero-blob two"></div>
+            <p class="hero-eyebrow reveal">Welcome to JW Website Hub!</p>
+            <div class="hero-chips reveal">
+                <span class="hero-chip">통계학 · 데이터사이언스</span>
+                <span class="hero-chip">AI / LLM</span>
+                <span class="hero-chip">SKALA 4th</span>
+            </div>
+            <h1 class="reveal">
             안녕하세요, 저는 <span>조종원</span>입니다.<br />
             더 나은 경험을 고민하는 개발자입니다.
             </h1>
-            <a href="signUp.html" class="btn btn-primary">회원가입하고 소통하기</a>
+            <div id="heroCta">
+                <a href="signUp.html" class="btn btn-primary">회원가입하고 소통하기</a>    
+            </div>
+            <button type="button" class="scroll-cue" id="scrollCue" aria-label="아래로 스크롤">
+                Scroll
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
         </section>
     </main>
     <aside class="mini-tools" id="miniTools" aria-label="자바스크립트로 만든 미니 프로그램">
@@ -513,6 +749,12 @@
             </div>
         </div>
     </footer>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" role="dialog" aria-modal="true">
+            <button type="button" class="modal-close" id="modalClose" aria-label="닫기">&times;</button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
     <script>
         // Up-Down 숫자 맞추기 게임 (prompt/alert 사용)
         document.getElementById('startUpDown').addEventListener('click', function () {
@@ -577,6 +819,138 @@
             });
             window.alert(message);
         });
+
+        // 리빌 애니메이션 실행
+        var revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(function (el) { observer.observe(el); });
+        } else {
+            revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+        }
+
+        // Scroll 버튼 클릭 시 미니 툴 섹션으로 이동
+        document.getElementById('scrollCue').addEventListener('click', function () {
+            document.getElementById('miniTools').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // 로그인 상태 유지
+
+        var USERS_KEY = 'jwhub_users';
+        var SESSION_KEY = 'jwhub_session';
+
+        function getSession() {
+            try { return JSON.parse(localStorage.getItem(SESSION_KEY)); } catch (err) { return null; }
+        }
+
+        function renderAuthState() {
+            var session = getSession();
+
+            var headerAuth = document.getElementById('headerAuth');
+            headerAuth.innerHTML = '';
+            if (session) {
+                var headerChip = document.createElement('span');
+                headerChip.className = 'header-user-chip';
+                headerChip.textContent = session.name + '님';
+                var headerLogoutBtn = document.createElement('button');
+                headerLogoutBtn.type = 'button';
+                headerLogoutBtn.className = 'header-logout-btn';
+                headerLogoutBtn.textContent = '로그아웃';
+                headerLogoutBtn.addEventListener('click', function () { localStorage.removeItem(SESSION_KEY); renderAuthState(); });
+                headerAuth.appendChild(headerChip);
+                headerAuth.appendChild(headerLogoutBtn);
+            } else {
+                var headerLoginBtn = document.createElement('button');
+                headerLoginBtn.type = 'button';
+                headerLoginBtn.className = 'header-login-btn';
+                headerLoginBtn.textContent = '로그인';
+                headerLoginBtn.addEventListener('click', function () { openModal('login'); });
+                headerAuth.appendChild(headerLoginBtn);
+            }
+
+            var cta = document.getElementById('heroCta');
+            cta.innerHTML = '';
+            if (session) {
+                var chip = document.createElement('span');
+                chip.className = 'welcome-chip';
+                chip.textContent = session.name + '님, 환영합니다 👋';
+                var logoutBtn = document.createElement('button');
+                logoutBtn.type = 'button';
+                logoutBtn.className = 'btn btn-secondary';
+                logoutBtn.textContent = '로그아웃';
+                logoutBtn.addEventListener('click', function () { localStorage.removeItem(SESSION_KEY); renderAuthState(); });
+                cta.appendChild(chip);
+                cta.appendChild(logoutBtn);
+            } else {
+                var link = document.createElement('a');
+                link.href = 'signUp.html';
+                link.className = 'btn btn-primary';
+                link.textContent = '회원가입하고 소통하기';
+                cta.appendChild(link);
+            }
+        }
+
+        renderAuthState();
+
+        //모달 열고 닫기
+        var TOOLS = {
+            login: {
+                render: function (body) {
+                    body.innerHTML =
+                        '<h3>로그인</h3>' +
+                        '<p class="modal-desc">가입하실 때 등록한 이메일과 비밀번호를 입력해주세요.</p>' +
+                        '<div class="modal-field"><label>이메일</label><input type="text" id="loginEmailInput" placeholder="example@email.com" /></div>' +
+                        '<div class="modal-field"><label>비밀번호</label><input type="password" id="loginPasswordInput" placeholder="비밀번호를 입력하세요" /></div>' +
+                        '<div class="modal-actions"><button type="button" class="btn btn-primary btn-block" id="loginSubmitBtn">로그인</button></div>' +
+                        '<div class="modal-result" id="loginResult" style="display:none;"></div>';
+
+                    var emailInput = body.querySelector('#loginEmailInput');
+                    var passwordInput = body.querySelector('#loginPasswordInput');
+                    var resultEl = body.querySelector('#loginResult');
+
+                    body.querySelector('#loginSubmitBtn').addEventListener('click', function () {
+                        var email = emailInput.value.trim();
+                        var password = passwordInput.value;
+                        if (!email || !password) {
+                            resultEl.style.display = 'block';
+                            resultEl.textContent = '이메일과 비밀번호를 모두 입력해주세요.';
+                            return;
+                        }
+                        var users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+                        var matched = users.find(function (u) { return u.email === email && u.password === password; });
+                        if (!matched) {
+                            resultEl.style.display = 'block';
+                            resultEl.textContent = '이메일 또는 비밀번호가 일치하지 않습니다.';
+                            return;
+                        }
+                        localStorage.setItem(SESSION_KEY, JSON.stringify({ name: matched.name, email: matched.email }));
+                        renderAuthState();
+                        closeModal();
+                    });
+                }
+            }
+        };
+        var modalOverlay = document.getElementById('modalOverlay');
+        var modalBody = document.getElementById('modalBody');
+
+        function openModal(toolId) {
+            TOOLS[toolId].render(modalBody);
+            modalOverlay.classList.add('open');
+        }
+        function closeModal() {
+            modalOverlay.classList.remove('open');
+            modalBody.innerHTML = '';
+        }
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function (e) { if (e.target === modalOverlay) closeModal(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
     </script>   
     <script type="module" src="realtimeInfo.js"></script>
     
