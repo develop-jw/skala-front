@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Class · JW Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="page-class">
+    <!-- 아이콘 스프라이트 (외부 라이브러리 없이 직접 그린 인라인 SVG) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="icon-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </symbol>
+            <symbol id="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+            </symbol>
+            <symbol id="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </symbol>
+            <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 12.5 9.5 18 20 6"></polyline>
+            </symbol>
+            <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+            </symbol>
+        </defs>
+    </svg>
+
+    <header class="site-header" id="siteHeader">
+    <div class="container">
+        <a href="../index.html" class="logo">JW</a>
+        <nav class="main-nav">
+        <ul>
+            <li><a href="myProfile.html">My Profile</a></li>
+            <li><a href="myClass.html" class="active">My Class</a></li>
+            <li><a href="myTrip.html">My Trip</a></li>
+        </ul>
+        </nav>
+        <div class="header-auth" id="headerAuth"></div>
+    </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <p class="section-eyebrow">Schedule</p>
+                <h1>나의 일정</h1>
+                <p>SKALA 수업과 개인 일정을 주간 시간표로 관리하는 공간입니다. (새로고침 시 초기화됩니다)</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container class-layout">
+                <div class="form-shell">
+                    <h2>일정 추가하기</h2>
+                    <form id="classForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="classDay">요일</label>
+                                <select id="classDay"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="classSlot">시간대</label>
+                                <select id="classSlot"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="classTitle">일정명</label>
+                            <input type="text" id="classTitle" placeholder="예: SKALA - 생성형 AI 실습" />
+                            <p class="form-error" id="classTitleError"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="classMemo">메모 (선택)</label>
+                            <input type="text" id="classMemo" placeholder="예: 팀 프로젝트 준비" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <svg><use href="#icon-plus"></use></svg>
+                            시간표에 추가
+                        </button>
+                    </form>
+                    <p class="table-note" id="classTableNote">같은 칸에 여러 일정을 추가하면 함께 표시됩니다.</p>
+                    <div class="login-required-notice" id="classLoginNotice" style="display:none;">
+                        <p>로그인하면 일정을 추가·수정·삭제할 수 있어요. 지금은 조회만 가능해요.</p>
+                        <a href="../index.html" class="btn btn-secondary btn-block">로그인하러 가기</a>
+                    </div>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                    <thead>
+                        <tr id="tableHeadRow"></tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="longTermSection">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-eyebrow">Long-term Plan</p>
+                    <h2>월간 · 연간 일정 관리</h2>
+                    <p>주간 시간표보다 넓은 범위, 월·연 단위의 큰 일정을 추가·수정·삭제할 수 있는 공간입니다.</p>
+                </div>
+
+                <p class="long-term-stat reveal">등록된 장기 일정 <strong id="longTermCount">0</strong>개</p>
+
+                <div class="container class-layout long-term-layout" style="padding:0;">
+                    <div class="form-shell" style="position:static;">
+                        <h2>장기 일정 추가하기</h2>
+                        <form id="longTermForm" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="ltYear">연도</label>
+                                    <input type="number" id="ltYear" value="2026" min="2000" max="2100" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="ltMonth">월</label>
+                                    <select id="ltMonth"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ltTitle">일정명</label>
+                                <input type="text" id="ltTitle" placeholder="예: SKALA 팀 프로젝트 마감" />
+                                <p class="form-error" id="ltTitleError"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="ltMemo">메모 (선택)</label>
+                                <input type="text" id="ltMemo" placeholder="예: 발표 자료 준비" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                            <svg><use href="#icon-plus"></use></svg>
+                            일정표에 추가
+                            </button>
+                        </form>
+                        <p class="table-note" id="ltTableNote">등록된 적 없는 연도를 입력하면 표에 새 행이 생깁니다.</p>
+                        <div class="login-required-notice" id="ltLoginNotice" style="display:none;">
+                            <p>로그인하면 장기 일정을 추가·수정·삭제할 수 있어요. 지금은 조회만 가능해요.</p>
+                            <a href="../index.html" class="btn btn-secondary btn-block">로그인하러 가기</a>
+                        </div>
+                    </div>
+
+                    <div class="schedule-table-wrapper table-fade" id="longTermTableWrapper">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr id="ltHeadRow"></tr>
+                            </thead>
+                            <tbody id="ltTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="logo">JW</span>
+                    <p>조종원의 개인 포트폴리오 허브입니다. 프로필, 일정, 여행 기록을 한곳에서 확인하실 수 있습니다.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="myProfile.html">My Profile</a></li>
+                        <li><a href="myClass.html">My Class</a></li>
+                        <li><a href="myTrip.html">My Trip</a></li>
+                        <li><a href="signUp.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:csjsyj12@naver.com">csjsyj12@naver.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 JW Portfolio. All rights reserved.</span>
+                <span>Made by 조종원</span>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../script/myClass.js"></script>
+</body>
+</html>

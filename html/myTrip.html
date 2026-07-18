@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Trip · JW Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="page-trip">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                <circle cx="12" cy="13.5" r="3.3"></circle>
+            </symbol>
+                <symbol id="icon-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="6 11 12 5 18 11"></polyline>
+            </symbol>
+                <symbol id="icon-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+            </symbol>
+        </defs>
+    </svg>
+
+    <header class="site-header" id="siteHeader">
+        <div class="container">
+            <a href="../index.html" class="logo">JW</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="myProfile.html">My Profile</a></li>
+                    <li><a href="myClass.html">My Class</a></li>
+                    <li><a href="myTrip.html" class="active">My Trip</a></li>
+                </ul>
+            </nav>
+            <div class="header-auth" id="headerAuth"></div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <p class="section-eyebrow">Travel</p>
+                <h1>여행 기록</h1>
+                <p>다녀온 여행지의 추억과 경험을 기록하는 공간입니다.</p>
+            </div>
+        </section>
+
+        <section class="trip-media">
+            <div class="container">
+                <div class="trip-media-header reveal">
+                    <p class="section-eyebrow">Highlight</p>
+                    <h2>여행 하이라이트</h2>
+                    <p>가장 기억에 남았던<br>한국에서 펼쳤던 맨시티와 아틀레티코 마드리드의 찬선경기.<br>2024.08</p>
+                </div>
+                <div class="trip-media-layout">
+                    <div class="trip-video-card reveal">
+                        <video class="trip-video" controls preload="metadata" poster="../media/서울월드컵경기장.jpg">
+                            <source src="../media/서울월드컵경기장.mp4" type="video/mp4" />
+                            브라우저가 video 태그를 지원하지 않습니다.
+                        </video>
+                    </div>
+                    <div class="trip-audio-card reveal">
+                        <div class="trip-audio-icon">
+                            <svg><use href="#icon-music"></use></svg>
+                        </div>
+                        <h3>여행 플레이리스트</h3>
+                        <p>여행하며 듣던 배경음악입니다.</p>
+                        <audio class="trip-audio" controls preload="none">
+                            <source src="../media/music.mp3" type="audio/mpeg" />
+                            브라우저가 audio 태그를 지원하지 않습니다.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="filter-bar">
+                    <button type="button" class="filter-btn active" data-filter="all">전체</button>
+                    <button type="button" class="filter-btn" data-filter="domestic">국내</button>
+                    <button type="button" class="filter-btn" data-filter="abroad">해외</button>
+                </div>
+
+                <div class="trip-grid" id="tripGrid">
+                    <div class="trip-card reveal" data-category="domestic">
+                        <div class="trip-photo">
+                            <img src="../media/부산.jpg" alt="부산 여행 사진">
+                        </div>
+                        <div class="trip-body">
+                            <div class="trip-meta">
+                                <span class="trip-tag">국내</span>
+                                <span class="trip-date">2026.07</span>
+                            </div>
+                            <h3>부산</h3>
+                            <p>해운대에서 넓은 바다를 구경하고 해산물 요리들을 먹었던 시원한 바다 여행.</p>
+                        </div>
+                    </div>
+
+                    <div class="trip-card reveal" data-category="domestic">
+                        <div class="trip-photo">
+                            <img src="../media/보성.jpg" alt="보성 여행 사진">
+                        </div>
+                        <div class="trip-body">
+                            <div class="trip-meta">
+                                <span class="trip-tag">국내</span>
+                                <span class="trip-date">2025.10</span>
+                            </div>
+                            <h3>보성</h3>
+                            <p>끝없이 펼쳐진 녹차밭을 걷고 녹차 아이스크림을 먹었던 여유로운 드라이브 여행.</p>
+                        </div>
+                    </div>
+
+                    <div class="trip-card reveal" data-category="domestic">
+                        <div class="trip-photo">
+                            <img src="../media/강릉.jpg" alt="강릉 여행 사진">
+                        </div>
+                        <div class="trip-body">
+                            <div class="trip-meta">
+                                <span class="trip-tag">국내</span>
+                                <span class="trip-date">2024.01</span>
+                            </div>
+                            <h3>강릉</h3>
+                            <p>시원한 동해 바다와 감성 카페를 함께 즐긴 겨울 여행.</p>
+                        </div>
+                    </div>
+
+                    <div class="trip-card reveal" data-category="abroad">
+                        <div class="trip-photo">
+                            <img src="../media/후쿠오카.jpg" alt="후쿠오카 여행 사진">
+                        </div>
+                        <div class="trip-body">
+                            <div class="trip-meta">
+                                <span class="trip-tag">해외</span>
+                                <span class="trip-date">2026.06</span>
+                            </div>
+                            <h3>후쿠오카, 일본</h3>
+                            <p>맛집 탐방과 쇼핑을 함께 즐기며 일본의 일상을 느낀 번개 여행.</p>
+                        </div>
+                    </div>
+
+                    <div class="trip-card reveal" data-category="abroad">
+                        <div class="trip-photo">
+                            <img src="../media/도쿄.jpg" alt="도쿄 여행 사진">
+                        </div>
+                        <div class="trip-body">
+                            <div class="trip-meta">
+                                <span class="trip-tag">해외</span>
+                                <span class="trip-date">2025.12</span>
+                            </div>
+                            <h3>도쿄, 일본</h3>
+                            <p>화려운 겨울 일루미네이션과 일본의 문화를 경험한 첫 혼자 여행</p>
+                        </div>
+                    </div>
+
+                    <div class="trip-card reveal" data-category="abroad">
+                        <div class="trip-photo">
+                            <img src="../media/코타키나발루.jpg" alt="코타키나발루">
+                        </div>
+                        <div class="trip-body">
+                            <div class="trip-meta">
+                                <span class="trip-tag">해외</span>
+                                <span class="trip-date">2025.02</span>
+                            </div>
+                            <h3>코타키나발루, 말레이시아</h3>
+                            <p>처음 경험한 스노쿨링과 현지 길거리 음식들을 즐긴 가족 여행.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="logo">JW</span>
+                    <p>조종원의 개인 포트폴리오 허브입니다. 프로필, 일정, 여행 기록을 한곳에서 확인하실 수 있습니다.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="myProfile.html">My Profile</a></li>
+                        <li><a href="myClass.html">My Class</a></li>
+                        <li><a href="myTrip.html">My Trip</a></li>
+                        <li><a href="signUp.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:csjsyj12@naver.com">csjsyj12@naver.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 JW Portfolio. All rights reserved.</span>
+                <span>Made by 조종원</span>
+            </div>
+        </div>
+    </footer>
+
+    <button class="to-top" id="toTopBtn" aria-label="맨 위로 이동">
+        <svg><use href="#icon-arrow-up"></use></svg>
+    </button>
+    
+    <script src="../script/myTrip.js"></script>
+</body>
+</html>
